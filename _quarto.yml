@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - posts/r/*.qmd
+    - posts/python/*.ipynb
+  resources:
+    - styles/
+
+website:
+  title: "Les Codex"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "R Tutorials"
+        href: posts/r/
+      - text: "Python Tutorials"
+        href: posts/python/
+    right:
+      - text: "About"
+        href: about.qmd
+
+format:
+  html:
+    theme: default
+    css: styles/typography.css
+    toc: true

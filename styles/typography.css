@@ -1,0 +1,30 @@
+html {
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #222;
+  background-color: #fff;
+}
+
+h1, h2, h3 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+code {
+  font-family: 'Fira Mono', monospace;
+  font-size: 90%;
+  background-color: #f9f9f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+blockquote {
+  font-style: italic;
+  color: #666;
+  border-left: 4px solid #ccc;
+  padding-left: 1em;
+}
+

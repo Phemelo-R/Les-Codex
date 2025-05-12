@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "posts/r/Mixed Models in R.html",
+    "href": "posts/r/Mixed Models in R.html",
+    "title": "Mixed Models in R",
+    "section": "",
+    "text": "Introduction\nThis tutorial introduces linear mixed-effects models using lme4 and nlme. We’ll examine nested designs, random intercepts, and structured residuals.\n\nlibrary(lme4)\n\nLoading required package: Matrix\n\n# Create an example dataset\nset.seed(123)\ndataset &lt;- data.frame(\n  y = rnorm(100, mean = 10, sd = 3),\n  x = rep(c(\"A\", \"B\"), each = 50),\n  group = rep(1:10, each = 10)\n)\n\n# Fit the model\nmodel &lt;- lmer(y ~ x + (1 | group), data = dataset)\nsummary(model)\n\nLinear mixed model fit by REML ['lmerMod']\nFormula: y ~ x + (1 | group)\n   Data: dataset\n\nREML criterion at convergence: 484\n\nScaled residuals: \n     Min       1Q   Median       3Q      Max \n-2.65819 -0.65412 -0.06497  0.70453  2.33883 \n\nRandom effects:\n Groups   Name        Variance Std.Dev.\n group    (Intercept) 0.04201  0.205   \n Residual             7.51252  2.741   \nNumber of obs: 100, groups:  group, 10\n\nFixed effects:\n            Estimate Std. Error t value\n(Intercept)  10.1032     0.3983  25.365\nxB            0.3360     0.5633   0.597\n\nCorrelation of Fixed Effects:\n   (Intr)\nxB -0.707"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Les Codex",
+    "section": "",
+    "text": "Welcome to Les Codex\nThis is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, biostatistics, and reproducible data science. Materials are written for clarity, conceptual grounding, and methodological rigour.\nStart exploring:\n\nR tutorials\nPython notebooks"
+  }
+]

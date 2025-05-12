@@ -1,0 +1,13 @@
+---
+title: "Les Codex"
+format: html
+---
+
+# Welcome to *Les Codex*
+
+This is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, biostatistics, and reproducible data science. Materials are written for clarity, conceptual grounding, and methodological rigour.
+
+Start exploring:
+
+-   [R tutorials](posts/r/)
+-   [Python notebooks](posts/python/)
