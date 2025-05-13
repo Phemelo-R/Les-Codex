@@ -1,13 +1,30 @@
 ---
-title: "Les Codex"
+title: "Welcome to Les Codex"
 format: html
 ---
 
-# Welcome to *Les Codex*
+## About *Les Codex*
 
-## A Hub for Data Science and Machine Learning
+Welcome to *Les Codex* — a digital companion for those beginning, refining, or critically engaging with R and machine learning. This site serves as both a structured archive and a dynamic learning space. At its core, it offers a gradual yet rigorous introduction to statistical programming with R, foregrounding practical applications without neglecting conceptual clarity.
 
-Les Codex is a growing collection of tutorials, notebooks, and annotated code focused on **R**, **Python**, **Biostatistics**, and **Reproducible Data Science**. This is the place where you’ll learn the latest techniques in machine learning, statistics, and data analysis, all in a clean, well-documented format.
+The content is organised to ease transitions between foundational concepts and advanced topics. Beginners will find scaffolding for essential syntax, data structures, and plotting. As you progress, you’ll encounter materials that draw from quantitative ecology, biostatistics, and machine learning — areas that demand both algorithmic precision and epistemic care.
+
+This is not a passive repository of tutorials. It is intended to sharpen your sense of inquiry, to cultivate a habit of testing assumptions, and to familiarise you with tools that distinguish signal from noise. You are encouraged to move back and forth between the sections, treat examples as modifiable experiments, and reflect critically on how code interacts with data and method.
+
+------------------------------------------------------------------------
+
+### Expected Outcomes
+
+-   **Literacy in R**: By engaging with the early modules, you will learn the grammar of R, how to write clean and purposeful code, and how to structure analyses in a reproducible manner.
+-   **Analytical Thinking**: Through exposure to worked examples, simulation models, and applied problems, you’ll build an instinct for structured inference and statistical reasoning.
+-   **Pathway to Machine Learning**: The later stages of the site introduce supervised and unsupervised learning using `tidymodels`, with emphasis on interpretability and model evaluation rather than hype.
+-   **Scientific Integrity**: Beyond technical fluency, the material aims to nurture a disposition attentive to scale, uncertainty, and the philosophical dimensions of modelling.
+
+This site is maintained as a living document. Contributions, criticisms, and alternative approaches are welcome — the goal is not completeness, but clarity and seriousness.
+
+------------------------------------------------------------------------
+
+*Les Codex* is for the reader who values careful work, conceptual grounding, and practical experimentation. It is not a fast track — it is a foundation.
 
 ------------------------------------------------------------------------
 
