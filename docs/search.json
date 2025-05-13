@@ -1,16 +1,51 @@
 [
   {
-    "objectID": "posts/r/Mixed Models in R.html",
-    "href": "posts/r/Mixed Models in R.html",
-    "title": "Mixed Models in R",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Les Codex",
     "section": "",
-    "text": "Introduction\nThis tutorial introduces linear mixed-effects models using lme4 and nlme. We’ll examine nested designs, random intercepts, and structured residuals.\n\nlibrary(lme4)\n\nLoading required package: Matrix\n\n# Create an example dataset\nset.seed(123)\ndataset &lt;- data.frame(\n  y = rnorm(100, mean = 10, sd = 3),\n  x = rep(c(\"A\", \"B\"), each = 50),\n  group = rep(1:10, each = 10)\n)\n\n# Fit the model\nmodel &lt;- lmer(y ~ x + (1 | group), data = dataset)\nsummary(model)\n\nLinear mixed model fit by REML ['lmerMod']\nFormula: y ~ x + (1 | group)\n   Data: dataset\n\nREML criterion at convergence: 484\n\nScaled residuals: \n     Min       1Q   Median       3Q      Max \n-2.65819 -0.65412 -0.06497  0.70453  2.33883 \n\nRandom effects:\n Groups   Name        Variance Std.Dev.\n group    (Intercept) 0.04201  0.205   \n Residual             7.51252  2.741   \nNumber of obs: 100, groups:  group, 10\n\nFixed effects:\n            Estimate Std. Error t value\n(Intercept)  10.1032     0.3983  25.365\nxB            0.3360     0.5633   0.597\n\nCorrelation of Fixed Effects:\n   (Intr)\nxB -0.707"
+    "text": "Les Codex is a collection of tutorials written by Phemelo-R for learners of R, Python, statistics, and scientific computing."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Les Codex",
     "section": "",
-    "text": "Welcome to Les Codex\nThis is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, biostatistics, and reproducible data science. Materials are written for clarity, conceptual grounding, and methodological rigour.\nStart exploring:\n\nR tutorials\nPython notebooks"
+    "text": "Les Codex is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, Biostatistics, and Reproducible Data Science. This is the place where you’ll learn the latest techniques in machine learning, statistics, and data analysis, all in a clean, well-documented format.\n\n\n\n\nDiscover the world of machine learning through practical tutorials and real-life examples. Whether you’re a beginner or looking to deepen your knowledge, you’ll find insightful content here.\n\nIntroduction to Machine Learning with R\nBuilding Neural Networks in Python\nHands-on with TensorFlow\n\n\n\n\n\nGet hands-on with data analysis and machine learning in both R and Python.\n\nR Tutorials\nPython Tutorials\n\n\n\n\n\nThis platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
+  },
+  {
+    "objectID": "index.html#a-hub-for-data-science-and-machine-learning",
+    "href": "index.html#a-hub-for-data-science-and-machine-learning",
+    "title": "Les Codex",
+    "section": "",
+    "text": "Les Codex is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, Biostatistics, and Reproducible Data Science. This is the place where you’ll learn the latest techniques in machine learning, statistics, and data analysis, all in a clean, well-documented format."
+  },
+  {
+    "objectID": "index.html#machine-learning-tutorials",
+    "href": "index.html#machine-learning-tutorials",
+    "title": "Les Codex",
+    "section": "",
+    "text": "Discover the world of machine learning through practical tutorials and real-life examples. Whether you’re a beginner or looking to deepen your knowledge, you’ll find insightful content here.\n\nIntroduction to Machine Learning with R\nBuilding Neural Networks in Python\nHands-on with TensorFlow"
+  },
+  {
+    "objectID": "index.html#explore-r-and-python-tutorials",
+    "href": "index.html#explore-r-and-python-tutorials",
+    "title": "Les Codex",
+    "section": "",
+    "text": "Get hands-on with data analysis and machine learning in both R and Python.\n\nR Tutorials\nPython Tutorials"
+  },
+  {
+    "objectID": "index.html#about-les-codex",
+    "href": "index.html#about-les-codex",
+    "title": "Les Codex",
+    "section": "",
+    "text": "This platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
+  },
+  {
+    "objectID": "Introduction to R/index.html",
+    "href": "Introduction to R/index.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Welcome to R\nThis section introduces R for absolute beginners. Topics include variables, data types, vectors, and basic plotting.\n\n# Basic example\n1+1\n\n[1] 2\n\n\n\nx &lt;- c(1, 2, 3, 4)\nmean(x)\n\n[1] 2.5"
   }
 ]

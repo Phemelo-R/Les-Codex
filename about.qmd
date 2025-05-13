@@ -1,9 +1,6 @@
 ---
-title: "About"
+title: "About Les Codex"
+format: html
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+Les Codex is a collection of tutorials written by Phemelo-R for learners of R, Python, statistics, and scientific computing.

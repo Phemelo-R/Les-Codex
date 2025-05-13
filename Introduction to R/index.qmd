@@ -1,0 +1,18 @@
+---
+title: "Introduction to R"
+format: html
+---
+
+# Welcome to R
+
+This section introduces R for absolute beginners. Topics include variables, data types, vectors, and basic plotting.
+
+```{r}
+# Basic example
+1+1
+```
+
+```{r}
+x <- c(1, 2, 3, 4)
+mean(x)
+```

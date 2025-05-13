@@ -3,10 +3,9 @@ project:
   output-dir: docs
   render:
     - index.qmd
-    - posts/r/*.qmd
-    - posts/python/*.ipynb
-  resources:
-    - styles/
+    - "Introduction to R/*.qmd"
+    # - python/*.qmd  ← remove or comment this line
+    - about.qmd
 
 website:
   title: "Les Codex"
@@ -14,10 +13,10 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "R Tutorials"
-        href: posts/r/
-      - text: "Python Tutorials"
-        href: posts/python/
+      - text: "Intro to R"
+        href: Introduction to R/index.qmd
+      # - text: "Python"
+        # href: python/index.qmd
     right:
       - text: "About"
         href: about.qmd
@@ -25,5 +24,5 @@ website:
 format:
   html:
     theme: default
-    css: styles/typography.css
+    css: styles/minimal.css
     toc: true
