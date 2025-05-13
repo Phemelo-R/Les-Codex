@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Les Codex",
+    "title": "Welcome to Les Codex",
     "section": "",
-    "text": "Les Codex is a growing collection of tutorials, notebooks, and annotated code focused on R, Python, Biostatistics, and Reproducible Data Science. This is the place where you’ll learn the latest techniques in machine learning, statistics, and data analysis, all in a clean, well-documented format.\n\n\n\n\nDiscover the world of machine learning through practical tutorials and real-life examples. Whether you’re a beginner or looking to deepen your knowledge, you’ll find insightful content here.\n\nIntroduction to Machine Learning with R\nBuilding Neural Networks in Python\nHands-on with TensorFlow\n\n\n\n\n\nGet hands-on with data analysis and machine learning in both R and Python.\n\nR Tutorials\nPython Tutorials\n\n\n\n\n\nThis platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
+    "text": "Welcome to Les Codex — a digital companion for those beginning, refining, or critically engaging with R and machine learning. This site serves as both a structured archive and a dynamic learning space. At its core, it offers a gradual yet rigorous introduction to statistical programming with R, foregrounding practical applications without neglecting conceptual clarity.\nThe content is organised to ease transitions between foundational concepts and advanced topics. Beginners will find scaffolding for essential syntax, data structures, and plotting. As you progress, you’ll encounter materials that draw from quantitative ecology, biostatistics, and machine learning — areas that demand both algorithmic precision and epistemic care.\nThis is not a passive repository of tutorials. It is intended to sharpen your sense of inquiry, to cultivate a habit of testing assumptions, and to familiarise you with tools that distinguish signal from noise. You are encouraged to move back and forth between the sections, treat examples as modifiable experiments, and reflect critically on how code interacts with data and method.\n\n\n\n\nLiteracy in R: By engaging with the early modules, you will learn the grammar of R, how to write clean and purposeful code, and how to structure analyses in a reproducible manner.\nAnalytical Thinking: Through exposure to worked examples, simulation models, and applied problems, you’ll build an instinct for structured inference and statistical reasoning.\nPathway to Machine Learning: The later stages of the site introduce supervised and unsupervised learning using tidymodels, with emphasis on interpretability and model evaluation rather than hype.\nScientific Integrity: Beyond technical fluency, the material aims to nurture a disposition attentive to scale, uncertainty, and the philosophical dimensions of modelling.\n\nThis site is maintained as a living document. Contributions, criticisms, and alternative approaches are welcome — the goal is not completeness, but clarity and seriousness.\n\nLes Codex is for the reader who values careful work, conceptual grounding, and practical experimentation. It is not a fast track — it is a foundation."
   },
   {
     "objectID": "index.html#a-hub-for-data-science-and-machine-learning",
@@ -23,23 +23,23 @@
   {
     "objectID": "index.html#machine-learning-tutorials",
     "href": "index.html#machine-learning-tutorials",
-    "title": "Les Codex",
-    "section": "",
-    "text": "Discover the world of machine learning through practical tutorials and real-life examples. Whether you’re a beginner or looking to deepen your knowledge, you’ll find insightful content here.\n\nIntroduction to Machine Learning with R\nBuilding Neural Networks in Python\nHands-on with TensorFlow"
+    "title": "Welcome to Les Codex",
+    "section": "Machine Learning Tutorials",
+    "text": "Machine Learning Tutorials\nDiscover the world of machine learning through practical tutorials and real-life examples. Whether you’re a beginner or looking to deepen your knowledge, you’ll find insightful content here.\n\nIntroduction to Machine Learning with R\nBuilding Neural Networks in Python\nHands-on with TensorFlow"
   },
   {
     "objectID": "index.html#explore-r-and-python-tutorials",
     "href": "index.html#explore-r-and-python-tutorials",
-    "title": "Les Codex",
-    "section": "",
-    "text": "Get hands-on with data analysis and machine learning in both R and Python.\n\nR Tutorials\nPython Tutorials"
+    "title": "Welcome to Les Codex",
+    "section": "Explore R and Python Tutorials",
+    "text": "Explore R and Python Tutorials\nGet hands-on with data analysis and machine learning in both R and Python.\n\nR Tutorials\nPython Tutorials\n\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
   },
   {
     "objectID": "index.html#about-les-codex",
     "href": "index.html#about-les-codex",
-    "title": "Les Codex",
+    "title": "Welcome to Les Codex",
     "section": "",
-    "text": "This platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
+    "text": "Welcome to Les Codex — a digital companion for those beginning, refining, or critically engaging with R and machine learning. This site serves as both a structured archive and a dynamic learning space. At its core, it offers a gradual yet rigorous introduction to statistical programming with R, foregrounding practical applications without neglecting conceptual clarity.\nThe content is organised to ease transitions between foundational concepts and advanced topics. Beginners will find scaffolding for essential syntax, data structures, and plotting. As you progress, you’ll encounter materials that draw from quantitative ecology, biostatistics, and machine learning — areas that demand both algorithmic precision and epistemic care.\nThis is not a passive repository of tutorials. It is intended to sharpen your sense of inquiry, to cultivate a habit of testing assumptions, and to familiarise you with tools that distinguish signal from noise. You are encouraged to move back and forth between the sections, treat examples as modifiable experiments, and reflect critically on how code interacts with data and method.\n\n\n\n\nLiteracy in R: By engaging with the early modules, you will learn the grammar of R, how to write clean and purposeful code, and how to structure analyses in a reproducible manner.\nAnalytical Thinking: Through exposure to worked examples, simulation models, and applied problems, you’ll build an instinct for structured inference and statistical reasoning.\nPathway to Machine Learning: The later stages of the site introduce supervised and unsupervised learning using tidymodels, with emphasis on interpretability and model evaluation rather than hype.\nScientific Integrity: Beyond technical fluency, the material aims to nurture a disposition attentive to scale, uncertainty, and the philosophical dimensions of modelling.\n\nThis site is maintained as a living document. Contributions, criticisms, and alternative approaches are welcome — the goal is not completeness, but clarity and seriousness.\n\nLes Codex is for the reader who values careful work, conceptual grounding, and practical experimentation. It is not a fast track — it is a foundation."
   },
   {
     "objectID": "Introduction to R/index.html",
@@ -47,5 +47,19 @@
     "title": "Introduction to R",
     "section": "",
     "text": "Welcome to R\nThis section introduces R for absolute beginners. Topics include variables, data types, vectors, and basic plotting.\n\n# Basic example\n1+1\n\n[1] 2\n\n\n\nx &lt;- c(1, 2, 3, 4)\nmean(x)\n\n[1] 2.5"
+  },
+  {
+    "objectID": "index.html#about-les-codex-1",
+    "href": "index.html#about-les-codex-1",
+    "title": "Welcome to Les Codex",
+    "section": "About Les Codex",
+    "text": "About Les Codex\nThis platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.\n\n\n\nCreated with 💻 by Phemelo Rutlokoane"
+  },
+  {
+    "objectID": "index.html#les-codex",
+    "href": "index.html#les-codex",
+    "title": "Welcome to Les Codex",
+    "section": "",
+    "text": "Welcome to Les Codex — a digital companion for those beginning, refining, or critically engaging with R and machine learning. This site serves as both a structured archive and a dynamic learning space. At its core, it offers a gradual yet rigorous introduction to statistical programming with R, foregrounding practical applications without neglecting conceptual clarity.\nThe content is organised to ease transitions between foundational concepts and advanced topics. Beginners will find scaffolding for essential syntax, data structures, and plotting. As you progress, you’ll encounter materials that draw from quantitative ecology, biostatistics, and machine learning — areas that demand both algorithmic precision and epistemic care.\nThis is not a passive repository of tutorials. It is intended to sharpen your sense of inquiry, to cultivate a habit of testing assumptions, and to familiarise you with tools that distinguish signal from noise. You are encouraged to move back and forth between the sections, treat examples as modifiable experiments, and reflect critically on how code interacts with data and method.\n\n\n\n\nLiteracy in R: By engaging with the early modules, you will learn the grammar of R, how to write clean and purposeful code, and how to structure analyses in a reproducible manner.\nAnalytical Thinking: Through exposure to worked examples, simulation models, and applied problems, you’ll build an instinct for structured inference and statistical reasoning.\nPathway to Machine Learning: The later stages of the site introduce supervised and unsupervised learning using tidymodels, with emphasis on interpretability and model evaluation rather than hype.\nScientific Integrity: Beyond technical fluency, the material aims to nurture a disposition attentive to scale, uncertainty, and the philosophical dimensions of modelling.\n\nThis site is maintained as a living document. Contributions, criticisms, and alternative approaches are welcome — the goal is not completeness, but clarity and seriousness.\n\nLes Codex is for the reader who values careful work, conceptual grounding, and practical experimentation. It is not a fast track — it is a foundation."
   }
 ]

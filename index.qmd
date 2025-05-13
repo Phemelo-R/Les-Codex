@@ -3,7 +3,7 @@ title: "Welcome to Les Codex"
 format: html
 ---
 
-## About *Les Codex*
+## *Les Codex*
 
 Welcome to *Les Codex* — a digital companion for those beginning, refining, or critically engaging with R and machine learning. This site serves as both a structured archive and a dynamic learning space. At its core, it offers a gradual yet rigorous introduction to statistical programming with R, foregrounding practical applications without neglecting conceptual clarity.
 
@@ -44,12 +44,6 @@ Get hands-on with data analysis and machine learning in both R and Python.
 
 -   R Tutorials
 -   Python Tutorials
-
-------------------------------------------------------------------------
-
-## About Les Codex
-
-This platform is dedicated to bringing clarity and accessibility to the complex world of data science, empowering you with the skills you need to tackle real-world challenges.
 
 ------------------------------------------------------------------------
 
