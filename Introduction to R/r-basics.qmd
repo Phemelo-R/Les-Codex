@@ -1,85 +1,204 @@
 ---
 title: "R Basics"
 format: html
+toc: true
 ---
 
-# R Basics
+# Fundamentals of Base R
 
-Welcome to your first R lecture. We will explore fundamental functions for descriptive statistics, discover R’s built-in datasets, and practise viewing data in RStudio.
+Welcome to your first R session. In this lesson you will learn how to:
 
-## 1. Computing Descriptive Statistics
+1.  Create and assign objects
+2.  Identify and inspect R’s basic data types
+3.  Compute descriptive statistics
+4.  Explore and summarise built-in datasets
+5.  View data in RStudio
+6.  Generate sequences and subset using logical operations
 
-Base R provides the following core functions without loading any extra packages:
+All functions and data here are part of **base R**—no extra packages required.
+
+------------------------------------------------------------------------
+
+## 1. Objects and Assignment
+
+Everything in R is an **object** (vectors, matrices, functions, etc.). To create or update an object, use the assignment operator `<-`:
 
 ```{r}
-# Sample numeric vector
+# Create a numeric vector named x 
+x <- c(5, 3, 9, 2, 7) 
+# Create another object y 
+y = 1:10   
+```
+
+-   `=` also works, but `<-` is preferred idiomatically
+
+-   Typing `x` in the **Console** then Enter will print its contents.
+
+-   Use `rm(x)` to remove an object.
+
+------------------------------------------------------------------------
+
+## 2. Base Data Types
+
+R’s core data structures include:
+
+| Type | Description | Example | Inspect with |
+|----|----|----|----|
+| **Vector** | 1D ordered collection of elements of the same type | `c(1,2,3)` | `class(x)`, `str(x)` |
+| **Matrix** | 2D array (rows×columns) | `matrix(1:6, nrow=2)` | `dim(m)`, `class(m)` |
+| **List** | Ordered collection of elements of any type | `list(1, "a", TRUE)` | `str(l)`, `names(l)` |
+| **Data frame** | Table with columns of potentially differing types | `data.frame(a=1:3, b=c("x","y","z"))` | `head(df)`, `str(df)` |
+
+```{r include=FALSE}
+
+# Examples
+vec <- c(10, 20, 30)
+mat <- matrix(1:6, nrow = 2)
+lst <- list(number = 1, text = "R", flag = FALSE)
+df  <- data.frame(id = 1:3, name = c("A","B","C"))
+class(vec); str(vec)
+dim(mat); class(mat)
+str(lst)
+head(df); str(df)
+```
+
+------------------------------------------------------------------------
+
+## 3. Descriptive Statistics
+
+Given a numeric vector, R provides core summary functions:
+
+```{r include=FALSE}
+
 data_vec <- c(8.2, 5.4, 9.7, 6.1, 7.3, 8.9)
 
-# Compute descriptive statistics
-mean_val   <- mean(data_vec)      # arithmetic mean
-sd_val     <- sd(data_vec)        # standard deviation
-median_val <- median(data_vec)    # median
-var_val    <- var(data_vec)       # variance
-quants     <- quantile(data_vec, probs = c(0.25, 0.5, 0.75))  # quartiles
-range_val  <- range(data_vec)     # min and max
+mean(data_vec)       # Arithmetic mean
+sd(data_vec)         # Sample standard deviation (n−1)
+median(data_vec)     # Middle value
+var(data_vec)        # Sample variance
+quantile(data_vec)   # 0%, 25%, 50%, 75%, 100%
+range(data_vec)      # Minimum and maximum
+summary(data_vec)    # Combined summary
 
-# Display results
-mean_val
-sd_val
-median_val
-var_val
-quants
-range_val
 ```
 
-### Explanation of Functions
+**Function behaviors**
 
--   `mean(x)`: average of the elements in `x`.
--   `sd(x)`: sample standard deviation (denominator *n*−1).
--   `median(x)`: middle value of sorted `x`.
--   `var(x)`: sample variance.
--   `quantile(x, probs)`: specified percentiles of `x`.
--   `range(x)`: minimum and maximum values of `x`.
+-   `mean(x)`: sum(x)/length(x)
 
-Use `?function_name` (e.g., `?mean`) in the console to view documentation.
+-   `sd(x)`: √variance(x)
 
-## 2. Built-in Datasets in R
+-   `quantile(x)`: named vector of percentiles
 
-R comes with many datasets. List them all with:
+-   `summary(x)`: prints Min, 1st Qu., Median, Mean, 3rd Qu., Max
 
-```{r}
-# Show available datasets
-data()
+Use `?mean` or `help("quantile")` for details.
+
+------------------------------------------------------------------------
+
+## 4. Built-in Datasets
+
+R includes numerous datasets for practice:
+
+```{r include=FALSE}
+
+data()               # List available datasets
+data(iris)           # Load iris into memory
+head(iris, 6)        # First six rows
+tail(iris, 4)        # Last four rows
+summary(iris)        # Column-wise summary
+str(iris)            # Structure and types
 ```
 
-Below are commonly used examples:
+| Dataset       | Description                              | Dimensions |
+|---------------|------------------------------------------|------------|
+| `iris`        | Flower measurements by species           | 150 × 5    |
+| `mtcars`      | Car specs (mpg, hp, wt, etc.)            | 32 × 11    |
+| `airquality`  | NY air pollution (Ozone, Solar.R, Wind)  | 153 × 6    |
+| `CO2`         | CO₂ uptake in plants under treatments    | 84 × 5     |
+| `PlantGrowth` | Plant weights under different treatments | 30 × 2     |
+
+Load other datasets similarly: `data(mtcars)`, then inspect.
+
+------------------------------------------------------------------------
+
+## 5. Viewing and Inspecting Data in RStudio
+
+-   **Console**: execute commands interactively.
+
+-   **Source**: script editor—write code and send to Console with `Ctrl+Enter` (Win/Linux) or `Cmd+Enter` (macOS).
+
+-   **Environment**: lists current objects—click to view.
+
+-   **Files/Plots/Packages/Help**: navigate files, inspect plots, manage packages, read documentation.
+
+```{r include=FALSE}
+
+View(iris)         # Opens a data viewer pane
+```
+
+Key inspector functions:
+
+```{r include=FALSE}
+
+dim(iris)         # Rows and columns
+nrow(iris); ncol(iris)
+names(iris)       # Column names
+class(iris); typeof(iris)
+```
+
+------------------------------------------------------------------------
+
+## 6. Sequences and Repetitions
+
+Create predictable sequences:
 
 ```{r}
-# Inspect iris dataset
-data(iris)
-head(iris)
+
+1:5                # 1,2,3,4,5
+seq(0, 1, by=0.2)  # 0.0,0.2,...,1.0
+rep("A", times=3)  # "A","A","A"
+```
+
+------------------------------------------------------------------------
+
+## 7. Logical Operations and Subsetting
+
+Logical tests return TRUE/FALSE:
+
+```{r}
+
+x <- c(3, 6, 9, 2)
+x > 5            # FALSE, TRUE, TRUE, FALSE
+x == 6           # FALSE, TRUE, FALSE, FALSE
+```
+
+------------------------------------------------------------------------
+
+```{x[x > 5]         # Subset where condition holds}
+```
+
+Combine conditions:
+
+```{r}
+
+x[x > 2 & x < 8] # AND
+x[x == 3 | x == 9] # OR
+```
+
+------------------------------------------------------------------------
+
+## 8. Summarising a Data Frame
+
+To summarise all columns in a data frame:
+
+```{r include=FALSE}
+
 summary(iris)
-str(iris)
 ```
 
-| Dataset | Description | Dimensions |
-|--------------|--------------------------------------------|--------------|
-| `iris` | Edgar Anderson’s measurements of iris flowers | 150 × 5 |
-| `mtcars` | Motor Trend car specifications and fuel consumption | 32 × 11 |
-| `airquality` | Daily air quality measurements in New York (1973) | 153 × 6 |
-| `CO2` | Carbon dioxide uptake in grass plants under different conditions | 84 × 5 |
-| `PlantGrowth` | Results of an experiment on plant weight under control and treat. | 30 × 2 |
+For more granular control, later we’ll use `dplyr::summarise()` on grouped data.
 
-## 3. Viewing Data in RStudio
+------------------------------------------------------------------------
 
--   **View( )**: In the console or script, run:
-
-    ```{r}
-    View(iris)
-    ```
-
-    This opens a spreadsheet-like viewer.
-
--   **Environment Pane**: Under the **Environment** tab, click a dataset name to inspect it interactively. Use the gear icon ⚙️ to show/hide columns.
-
-Always check dimensions (`dim(x)`), variable names (`names(x)`), and types (`class(x)` / `typeof(x)`) before proceeding.
+Congratulations—these are the essential tools of base R. Next, explore [Key Packages](packages.qmd) to extend your capabilities beyond the base installation.
