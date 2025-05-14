@@ -1,0 +1,75 @@
+---
+title: "R Basics"
+format: html
+---
+
+# R Basics
+
+Welcome to a foundational lesson on base R functions, datasets, and data exploration. Treat this as your first lecture: we will cover how to compute descriptive statistics, access built-in datasets, and view data within RStudio.
+
+## 1. Descriptive Statistics in Base R
+
+Without loading any packages, R provides functions to compute common statistics directly:
+
+```{r}
+# Create a numeric vector
+values <- c(12.5, 17.8, 9.3, 14.1, 11.7)
+
+# Arithmetic mean (average)
+mean_value <- mean(values)
+mean_value
+
+# Standard deviation (population default)
+sd_value <- sd(values)
+sd_value
+
+# Summary of vector (min, 1Q, median, mean, 3Q, max)
+summary(values)
+```
+
+**Explanation**: - `mean(x)`: sums all elements of `x` and divides by the count. - `sd(x)`: calculates the square root of the variance (with denominator `n-1`). - `summary(x)`: returns a six-number summary plus the mean.
+
+You can also compute other measures: - **Median**: `median(values)` - **Variance**: `var(values)` - **Quantiles**: `quantile(values, probs = c(0.25, 0.5, 0.75))` - **Range**: `range(values)`
+
+## 2. Built-in Datasets in R
+
+R includes numerous datasets for practice. To see all available datasets, run:
+
+```{r}
+# List all datasets
+data()
+```
+
+Below are some key datasets you will encounter:
+
+-   **iris**: Fisher's iris data (1936). Measures of sepal & petal lengths for three species of iris. 150 observations, 5 variables.
+-   **mtcars**: Motor Trend Car Road Tests (1974). Fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+-   **airquality**: New York Air Quality Measurements (1973). Daily readings of ozone, solar radiation, wind, and temperature in New York.
+-   **USArrests**: Violent Crime Rates by US State (1973). Murder, Assault, UrbanPop, and Rape statistics for 50 states.
+-   **PlantGrowth**: Results of an experiment on plant weight under different treatments.
+
+To load and inspect a dataset:
+
+```{r}
+# Load iris and view first rows
+data(iris)
+head(iris)
+
+# Summary of mtcars
+data(mtcars)
+summary(mtcars)
+```
+
+## 3. Viewing Data in RStudio
+
+You have two main options:
+
+1.  **View() function**: Opens a spreadsheet-like viewer.
+
+```{r}
+View(iris)
+```
+
+2.  **Environment pane**: In RStudio, click the dataset name under **Environment** → **Data**. You can sort, filter, and search within this view.
+
+Use these tools to familiarise yourself with your data before analysis.
