@@ -7,8 +7,8 @@ format: html
 
 This section provides an overview of R and RStudio, and directs you to two core subtopics:
 
--   [R Basics](Introduction to R/r-basics.qmd) — fundamental functions, built-in datasets, and data exploration.
--   [R Packages](Introduction to R/packages.qmd) — installing and using essential data science packages.
+-   [R Basics](r-basics.html) — fundamental functions, built-in datasets, and data exploration.
+-   [R Packages](packages.html) — installing and using essential data science packages.
 
 ## What is R?
 
