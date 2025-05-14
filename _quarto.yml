@@ -16,7 +16,7 @@ website:
         href: index.qmd
       - text: "R Tutorials"
         menu:
-          - text: "Getting Started"
+          - text: "Introduction to R"
             href: Introduction to R/index.qmd
           - text: "Key Packages"
             href: Introduction to R/packages.qmd
