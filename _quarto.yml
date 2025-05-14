@@ -4,7 +4,8 @@ project:
   render:
     - index.qmd
     - "Introduction to R/*.qmd"
-    # - python/*.qmd
+    - "Python Tutorials/*.qmd"
+    - "Error Bypass Atlas/*.qmd"
     - about.qmd
 
 website:
@@ -13,10 +14,20 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Introduction to R"
-        href: Introduction to R/index.qmd
-      # - text: "Python"
-        # href: python/index.qmd
+      - text: "R Tutorials"
+        menu:
+          - text: "Getting Started"
+            href: Introduction to R/index.qmd
+          - text: "Key Packages"
+            href: Introduction to R/packages.qmd
+      - text: "Python Tutorials"
+        menu:
+          - text: "Getting Started"
+            href: Python Tutorials/index.qmd
+          - text: "Data Science Stack"
+            href: Python Tutorials/packages.qmd
+      - text: "Error Bypass"
+        href: Error Bypass Atlas/index.qmd
     right:
       - text: "About"
         href: about.qmd
@@ -26,3 +37,4 @@ format:
     theme: default
     css: styles/minimal.css
     toc: true
+
