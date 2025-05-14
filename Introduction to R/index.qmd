@@ -5,6 +5,11 @@ format: html
 
 # Introduction to R
 
+This section provides an overview of R and RStudio, and directs you to two core subtopics:
+
+-   [R Basics](r-basics.qmd) — fundamental functions, built-in datasets, and data exploration.
+-   [R Packages](packages.qmd) — installing and using essential data science packages.
+
 ## What is R?
 
 R is a language and environment for statistical computing and graphics. Developed by Ross Ihaka and Robert Gentleman at the University of Auckland, R has grown into an open-source project maintained by the R Core Team. It excels in data manipulation, statistical modelling, and rich visualizations.
