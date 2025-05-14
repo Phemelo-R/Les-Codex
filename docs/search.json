@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About Les Codex",
     "section": "",
-    "text": "Les Codex is a collection of tutorials written by Phemelo-R for learners of R, Python, statistics, and scientific computing."
+    "text": "Les Codex is an open, evolving repository of tutorials, notebooks, and conceptual guides for quantitative programming in the sciences. Grounded in structured inference, epistemic clarity, and methodological transparency, this project brings together tools, workflows, and commentary across:\n\nR and the Tidyverse\nPython for data analysis and modelling\nJupyter Notebooks as computational narratives\nBiostatistics, quantitative ecology, and applied statistics\nReproducible research and scientific computing best practices\n\nLes Codex is not just a collection of code, it is a conceptual workspace, a digital codex, documenting and interrogating how we use programming to structure understanding in data-rich environments.\n\n\nThe repository is structured thematically and methodologically, reflecting how statistical thought intersects with code. Each section contains tutorials, commentary, and often datasets or references. Content includes:\n\nR Notebooks: General statistics, GLMs, multivariate methods, and ecological modelling.\nPython Scripts: Pandas, NumPy, matplotlib, scikit-learn, and workflow automation.\nJupyter Narratives: Stepwise modelling, data wrangling, simulation studies, etc.\nBiostatistics: Confidence intervals, power analysis, survival analysis, mixed models.\nField Applications: Sampling design, environmental data, spatiotemporal analysis.\n\nAll material is written with attention to conceptual ordering: code follows argument, not the other way around.\n\n\n\nThis is not a collection of “tips and tricks.” It is an attempt to build a living codex of computational practice—reflecting both the theory that underwrites our models and the pragmatics of their implementation.\nLes Codex privileges clarity over cleverness, rigour over speed, and understanding over mechanical reproduction.\n\n\n\nAt present, this is a personal project. If you’re aligned with the epistemic and pedagogical goals here and want to contribute, feel free to open a discussion or pull request. Contributions that bring depth, not just breadth, are welcome.\n\n\n\nMIT Licence. All content is freely available for learning, adaptation, and reuse—with attribution."
   },
   {
     "objectID": "index.html",
@@ -159,5 +159,33 @@
     "title": "R Basics",
     "section": "",
     "text": "View( ): In the console or script, run:\n\nView(iris)\n\nThis opens a spreadsheet-like viewer.\nEnvironment Pane: Under the Environment tab, click a dataset name to inspect it interactively. Use the gear icon ⚙️ to show/hide columns.\n\nAlways check dimensions (dim(x)), variable names (names(x)), and types (class(x) / typeof(x)) before proceeding."
+  },
+  {
+    "objectID": "about.html#what-youll-find-here",
+    "href": "about.html#what-youll-find-here",
+    "title": "About Les Codex",
+    "section": "",
+    "text": "The repository is structured thematically and methodologically, reflecting how statistical thought intersects with code. Each section contains tutorials, commentary, and often datasets or references. Content includes:\n\nR Notebooks: General statistics, GLMs, multivariate methods, and ecological modelling.\nPython Scripts: Pandas, NumPy, matplotlib, scikit-learn, and workflow automation.\nJupyter Narratives: Stepwise modelling, data wrangling, simulation studies, etc.\nBiostatistics: Confidence intervals, power analysis, survival analysis, mixed models.\nField Applications: Sampling design, environmental data, spatiotemporal analysis.\n\nAll material is written with attention to conceptual ordering: code follows argument, not the other way around."
+  },
+  {
+    "objectID": "about.html#philosophy",
+    "href": "about.html#philosophy",
+    "title": "About Les Codex",
+    "section": "",
+    "text": "This is not a collection of “tips and tricks.” It is an attempt to build a living codex of computational practice—reflecting both the theory that underwrites our models and the pragmatics of their implementation.\nLes Codex privileges clarity over cleverness, rigour over speed, and understanding over mechanical reproduction."
+  },
+  {
+    "objectID": "about.html#contributions",
+    "href": "about.html#contributions",
+    "title": "About Les Codex",
+    "section": "",
+    "text": "At present, this is a personal project. If you’re aligned with the epistemic and pedagogical goals here and want to contribute, feel free to open a discussion or pull request. Contributions that bring depth, not just breadth, are welcome."
+  },
+  {
+    "objectID": "about.html#licence",
+    "href": "about.html#licence",
+    "title": "About Les Codex",
+    "section": "",
+    "text": "MIT Licence. All content is freely available for learning, adaptation, and reuse—with attribution."
   }
 ]
