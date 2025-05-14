@@ -4,7 +4,7 @@ project:
   render:
     - index.qmd
     - "Introduction to R/*.qmd"
-    # - python/*.qmd  ← remove or comment this line
+    # - python/*.qmd
     - about.qmd
 
 website:
@@ -13,7 +13,7 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Intro to R"
+      - text: "Introduction to R"
         href: Introduction to R/index.qmd
       # - text: "Python"
         # href: python/index.qmd
