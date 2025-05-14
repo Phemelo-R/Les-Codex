@@ -3,16 +3,77 @@ title: "Introduction to R"
 format: html
 ---
 
-# Welcome to R
+# Introduction to R
 
-This section introduces R for absolute beginners. Topics include variables, data types, vectors, and basic plotting.
+## What is R?
 
-```{r}
-# Basic example
-1+1
-```
+R is a language and environment for statistical computing and graphics. Developed by Ross Ihaka and Robert Gentleman at the University of Auckland, R has grown into an open-source project maintained by the R Core Team. It excels in data manipulation, statistical modelling, and rich visualizations.
 
-```{r}
-x <- c(1, 2, 3, 4)
-mean(x)
-```
+## What is RStudio?
+
+RStudio is an integrated development environment (IDE) for R. Created by JJ Allaire and the RStudio team, it provides a user-friendly interface with syntax highlighting, code completion, and tools for plotting, history, and workspace management.
+
+## Why Use R?
+
+-   **Open Source**: Free to use and extend.
+-   **Community**: A vast ecosystem of packages (CRAN, Bioconductor).
+-   **Flexibility**: From basic statistics to advanced machine learning and data science.
+-   **Reproducibility**: Integrates with R Markdown and Quarto for reproducible reports.
+
+## Installation
+
+### Windows
+
+1.  Download R: <https://cran.r-project.org/bin/windows/base/>\
+2.  Run the installer and follow the prompts.
+3.  Download RStudio Desktop: <https://posit.co/download/rstudio-desktop/>\
+4.  Install RStudio.
+
+### Mac
+
+1.  Download R: <https://cran.r-project.org/bin/macosx/>\
+2.  Install the `.pkg` file.\
+3.  Download RStudio Desktop: <https://posit.co/download/rstudio-desktop/>\
+4.  Install RStudio.
+
+### Linux
+
+1.  Follow your distribution’s instructions: <https://cran.r-project.org/bin/linux/>\
+2.  Install via package manager (e.g., `sudo apt install r-base`).\
+3.  Download and install RStudio Desktop: <https://posit.co/download/rstudio-desktop/>
+
+## Getting Started with RStudio
+
+### RStudio Layout and Panes
+
+RStudio’s default layout consists of four key panes arranged in a 2x2 grid. You can customise this arrangement via **View → Panes → Pane Layout**.
+
+1.  **Source Editor (Top-Left)**
+    -   Contains your script or Quarto document.
+    -   Features line numbering, syntax highlighting, and code folding (collapse/expand blocks).
+    -   Use **Ctrl+Shift+N** (Windows/Linux) or **Cmd+Shift+N** (macOS) to create a new script.
+2.  **Console (Bottom-Left)**
+    -   Executes R commands interactively.
+    -   Shows directly evaluated expressions and error messages.
+    -   You can run selected code from the Source with **Ctrl+Enter** or **Cmd+Enter**.
+3.  **Environment/History (Top-Right)**
+    -   **Environment** tab lists current objects: variables, data frames, functions.
+    -   **History** tab records all commands you’ve executed in the console.
+    -   Click the broom icon in Environment to clear workspace.
+4.  **Files/Plots/Packages/Help/Viewer (Bottom-Right)**
+    -   **Files**: Browse project files; open by double-clicking.
+    -   **Plots**: Shows generated graphs; use arrows to navigate past plots.
+    -   **Packages**: Install, update, and load packages with checkboxes.
+    -   **Help**: Access documentation for functions and packages; search by term.
+    -   **Viewer**: Renders HTML outputs, such as Quarto previews or `shiny` apps.
+
+------------------------------------------------------------------------
+
+## Customising Your Workspace
+
+-   **Themes**: Change editor theme under *Tools → Global Options → Appearance*. Options include light (TextMate, Solarized Light) and dark (Cobalt, Monokai).
+-   **Pane Layout**: Move panes around under *View → Panes → Pane Layout…*; drag and swap quadrants.
+-   **Code Completion**: Ensure *Enable code completion* is ticked in *Global Options → Code → Completion*.
+-   **Add-Ons**:
+    -   **Git/GitHub**: Integrate under *Global Options → Git/SVN*; enable version control for your project.
+    -   **AI Assistants**: Use extensions like GitHub Copilot for RMarkdown via *Tools → Addins*.
