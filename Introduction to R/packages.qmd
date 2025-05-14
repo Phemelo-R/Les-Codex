@@ -5,70 +5,123 @@ format: html
 
 # R Packages for Data Science
 
-In R, packages extend core functionality. Below we cover installation, loading, and examples for essential packages.
+Packages in R are collections of functions, data, and compiled code that extend base R capabilities. We will cover installation, loading, essential package ecosystems, and practical examples.
 
-## 1. Installing and Loading Packages
+## 1. Installing Packages
+
+### Selecting a CRAN mirror
+
+Before installing, ensure you have a CRAN mirror set. When you first invoke `install.packages()`, R will prompt you to choose a mirror. Select one geographically close to you for speed.
 
 ```{r}
-# Install packages from CRAN
-install.packages("tidyverse")   # collection for data manipulation and visualization
-install.packages("vegan")       # ecological and multivariate analysis
-install.packages("readr")       # fast data import
-install.packages("sf")          # spatial data
-
-# Load packages
-library(tidyverse)
-library(vegan)
-library(readr)
-library(sf)
+# Example: install tidyverse
+install.packages("tidyverse")
 ```
 
-## 2. tidyverse
+-   **`install.packages("pkg")`** downloads source or binary from CRAN and installs it into your library (use `getwd()` if you’re unsure where your default library is located).
 
-The **tidyverse** is a suite by Hadley Wickham that shares an underlying design philosophy: - **dplyr**: Grammar of data manipulation (`filter`, `select`, `mutate`, `summarise`, `arrange`). - **ggplot2**: Grammar of graphics for layered plotting. - **tidyr**: Tools to reshape and tidy data. - **readr**: Fast and friendly data import.
+-   To specify a mirror programmatically:
 
-### Example: Data Wrangling and Plotting
+    ``` r
+    install.packages("tidyverse", repos = "https://cloud.r-project.org")
+    ```
+
+### Updating Packages
 
 ```{r}
-# Load iris as tibble
-tibble_iris <- as_tibble(iris)
+# Update all installed packages
+download.packages(repos = "https://cloud.r-project.org")
+# Or use utils function
+i <- old.packages()
+if (!is.null(i)) update.packages(ask = FALSE)
+```
 
-# Compute mean petal length by species
-tibble_iris %>%
+## 2. Loading Packages
+
+Once installed, load a package with `library()` or `require()`:
+
+```{r}
+library(tidyverse)  # Loads core tidyverse packages
+tidyverse_conflicts()
+
+require(vegan)      # Alternative; returns TRUE if loaded
+```
+
+-   **`library(pkg, quietly = TRUE)`** loads without startup messages.
+-   **`conflicts()`** lists any masking of functions from different packages.
+
+## 3. Essential Package Ecosystems
+
+### tidyverse
+
+A coherent suite designed for data science by Hadley Wickham and team: - **`dplyr`**: Data manipulation grammar (`filter()`, `select()`, `mutate()`, `summarise()`, `arrange()`). - **`ggplot2`**: Grammar of graphics for plotting. - **`tidyr`**: Tools to reshape (`pivot_longer`, `pivot_wider`). - **`readr`**: High-performance data import (`read_csv`, `read_delim`).
+
+#### tidyverse Example
+
+```{r}
+# Import a CSV via readr
+# df <- read_csv("path/to/file.csv")
+
+# Using built-in iris dataset as tibble
+df <- as_tibble(iris)
+
+# Chain operations with dplyr
+df_summary <- df %>%
+  filter(Sepal.Length > 5) %>%
   group_by(Species) %>%
-  summarise(mean_petal = mean(Petal.Length), sd_petal = sd(Petal.Length))
+  summarise(
+    mean_sep = mean(Sepal.Length),
+    sd_sep   = sd(Sepal.Length),
+    count    = n()
+  )
 
-# Plot distribution of Sepal.Length
-ggplot(tibble_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
-  geom_boxplot() +
-  labs(title = "Sepal Length by Species", y = "Sepal Length (cm)")
+# Display summary
+df_summary
+
+# Create a scatter plot with ggplot2
+ggplot(df, aes(x = Sepal.Length, y = Petal.Length, colour = Species)) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Sepal vs Petal Length by Species")
 ```
 
-## 3. vegan
+### vegan
 
-**vegan** is specialised for community ecology: - **diversity()**: Calculate diversity indices (Shannon, Simpson). - **rda() / cca()**: Redundancy analysis, canonical correspondence. - **metaMDS()**: Non-metric multidimensional scaling.
+Community ecology and multivariate statistics: - **`diversity(x, index = "shannon")`**: Shannon diversity index. - **`metaMDS(x, distance = "bray")`**: Non-metric multidimensional scaling. - **`rda(x, y)`**: Redundancy analysis (constrained ordination).
 
-### Example: Ecological Analysis
+#### vegan Example
 
 ```{r}
-# Load dune dataset from vegan
+# Load datasets
+library(vegan)
 data(dune)
 data(dune.env)
 
-# Compute Shannon diversity for each site
-diversities <- diversity(dune)
-diversities
+# Calculate Shannon diversity by site
+div_shannon <- diversity(dune, index = "shannon")
+print(div_shannon)
 
-# Run NMDS ordination
-nmds <- metaMDS(dune)
-plot(nmds)
+# Perform NMDS ordination
+nmds_res <- metaMDS(dune, distance = "bray", k = 2)
+plot(nmds_res, type = "n")
+text(nmds_res, display = "sites")
 ```
 
-## 4. Additional Packages
+### Other Noteworthy Packages
 
--   **sf**: Simple features for spatial data. Use `st_read()` to load shapefiles.
--   **lubridate**: Work with dates and times (`ymd`, `hms`).
--   **stringr**: Consistent functions for string manipulation.
--   **purrr**: Functional programming tools (map, reduce).
+-   **sf**: Simple features for spatial vector data. Use `st_read()` to import spatial files.
+-   **lubridate**: Simplifies date-time parsing (`ymd()`, `hms()`) and arithmetic.
+-   **stringr**: Consistent and user-friendly string manipulation (`str_detect`, `str_replace`).
+-   **purrr**: Functional programming tools to iterate (`map`, `map_df`).
 
-Explore CRAN or use `browseURL('https://cran.r-project.org/web/packages/')` to find more.
+#### Example: Loading and using `sf`
+
+```{r}
+# Install if needed
+# install.packages("sf")
+
+library(sf)
+# Read a shapefile (replace with your own path)
+# shapefile <- st_read("data/your_shapefile.shp")
+# Print geometry summary
+# print(shapefile)
+```
