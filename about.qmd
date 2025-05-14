@@ -3,4 +3,48 @@ title: "About Les Codex"
 format: html
 ---
 
-Les Codex is a collection of tutorials written by Phemelo-R for learners of R, Python, statistics, and scientific computing.
+# Les-Codex
+
+Les Codex is an open, evolving repository of tutorials, notebooks, and conceptual guides for quantitative programming in the sciences. Grounded in structured inference, epistemic clarity, and methodological transparency, this project brings together tools, workflows, and commentary across:
+
+-   R and the Tidyverse
+
+-   Python for data analysis and modelling
+
+-   Jupyter Notebooks as computational narratives
+
+-   Biostatistics, quantitative ecology, and applied statistics
+
+-   Reproducible research and scientific computing best practices
+
+Les Codex is not just a collection of code, it is a conceptual workspace, a digital codex, documenting and interrogating how we use programming to structure understanding in data-rich environments.
+
+## What You’ll Find Here
+
+The repository is structured thematically and methodologically, reflecting how statistical thought intersects with code. Each section contains tutorials, commentary, and often datasets or references. Content includes:
+
+-   R Notebooks: General statistics, GLMs, multivariate methods, and ecological modelling.
+
+-   Python Scripts: Pandas, NumPy, matplotlib, scikit-learn, and workflow automation.
+
+-   Jupyter Narratives: Stepwise modelling, data wrangling, simulation studies, etc.
+
+-   Biostatistics: Confidence intervals, power analysis, survival analysis, mixed models.
+
+-   Field Applications: Sampling design, environmental data, spatiotemporal analysis.
+
+All material is written with attention to conceptual ordering: code follows argument, not the other way around.
+
+## Philosophy
+
+This is not a collection of “tips and tricks.” It is an attempt to build a living codex of computational practice—reflecting both the theory that underwrites our models and the pragmatics of their implementation.
+
+Les Codex privileges clarity over cleverness, rigour over speed, and understanding over mechanical reproduction.
+
+## Contributions
+
+At present, this is a personal project. If you're aligned with the epistemic and pedagogical goals here and want to contribute, feel free to open a discussion or pull request. Contributions that bring depth, not just breadth, are welcome.
+
+## Licence
+
+MIT Licence. All content is freely available for learning, adaptation, and reuse—with attribution.
