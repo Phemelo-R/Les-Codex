@@ -1,0 +1,74 @@
+---
+title: "R Packages"
+format: html
+---
+
+# R Packages for Data Science
+
+In R, packages extend core functionality. Below we cover installation, loading, and examples for essential packages.
+
+## 1. Installing and Loading Packages
+
+```{r}
+# Install packages from CRAN
+install.packages("tidyverse")   # collection for data manipulation and visualization
+install.packages("vegan")       # ecological and multivariate analysis
+install.packages("readr")       # fast data import
+install.packages("sf")          # spatial data
+
+# Load packages
+library(tidyverse)
+library(vegan)
+library(readr)
+library(sf)
+```
+
+## 2. tidyverse
+
+The **tidyverse** is a suite by Hadley Wickham that shares an underlying design philosophy: - **dplyr**: Grammar of data manipulation (`filter`, `select`, `mutate`, `summarise`, `arrange`). - **ggplot2**: Grammar of graphics for layered plotting. - **tidyr**: Tools to reshape and tidy data. - **readr**: Fast and friendly data import.
+
+### Example: Data Wrangling and Plotting
+
+```{r}
+# Load iris as tibble
+tibble_iris <- as_tibble(iris)
+
+# Compute mean petal length by species
+tibble_iris %>%
+  group_by(Species) %>%
+  summarise(mean_petal = mean(Petal.Length), sd_petal = sd(Petal.Length))
+
+# Plot distribution of Sepal.Length
+ggplot(tibble_iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  labs(title = "Sepal Length by Species", y = "Sepal Length (cm)")
+```
+
+## 3. vegan
+
+**vegan** is specialised for community ecology: - **diversity()**: Calculate diversity indices (Shannon, Simpson). - **rda() / cca()**: Redundancy analysis, canonical correspondence. - **metaMDS()**: Non-metric multidimensional scaling.
+
+### Example: Ecological Analysis
+
+```{r}
+# Load dune dataset from vegan
+data(dune)
+data(dune.env)
+
+# Compute Shannon diversity for each site
+diversities <- diversity(dune)
+diversities
+
+# Run NMDS ordination
+nmds <- metaMDS(dune)
+plot(nmds)
+```
+
+## 4. Additional Packages
+
+-   **sf**: Simple features for spatial data. Use `st_read()` to load shapefiles.
+-   **lubridate**: Work with dates and times (`ymd`, `hms`).
+-   **stringr**: Consistent functions for string manipulation.
+-   **purrr**: Functional programming tools (map, reduce).
+
+Explore CRAN or use `browseURL('https://cran.r-project.org/web/packages/')` to find more.
