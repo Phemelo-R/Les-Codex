@@ -74,11 +74,84 @@ RStudio’s default layout consists of four key panes arranged in a 2x2 grid. Yo
 
 ------------------------------------------------------------------------
 
-## Customising Your Workspace
+## Customising Your RStudio Workspace
 
--   **Themes**: Change editor theme under *Tools → Global Options → Appearance*. Options include light (TextMate, Solarized Light) and dark (Cobalt, Monokai).
--   **Pane Layout**: Move panes around under *View → Panes → Pane Layout…*; drag and swap quadrants.
--   **Code Completion**: Ensure *Enable code completion* is ticked in *Global Options → Code → Completion*.
--   **Add-Ons**:
-    -   **Git/GitHub**: Integrate under *Global Options → Git/SVN*; enable version control for your project.
-    -   **AI Assistants**: Use extensions like GitHub Copilot for RMarkdown via *Tools → Addins*.
+RStudio’s IDE is highly configurable. Below are step-by-step instructions to tailor the environment for productivity, including how to install GitHub Copilot support.
+
+### 1. Installing GitHub Copilot in RStudio
+
+1.  **Prerequisite**: You need RStudio 2023.06.1 or later and a valid GitHub Copilot subscription.\
+2.  **Install the Extension**:
+    -   In RStudio, go to **Tools → Global Options → Visual Studio Code → Enable VS Code extensions**.\
+    -   Click **Install** when prompted; RStudio will download the VS Code extension host.\
+3.  **Enable Copilot**:
+    -   Restart RStudio.\
+    -   Open **Tools → Addins → Browse Addins**, search for “GitHub Copilot”, and click **Install**.\
+    -   After installation, Copilot icons appear in the toolbar.\
+4.  **Authenticate**:
+    -   Click the Copilot icon (a small airplane) in the top-right of the Source pane.\
+    -   A dialog opens: click **Sign in with GitHub**, follow the browser prompts, and authorise Copilot.\
+    -   Back in RStudio, you should see “Copilot: Enabled” in the status bar.
+
+> **Pro tip**: Use `Alt + \` (Windows/Linux) or `Option + \` (macOS) to trigger Copilot suggestions inline.
+
+------------------------------------------------------------------------
+
+### 2. Changing Appearance (Themes & Fonts)
+
+1.  **Editor Theme**:
+    -   **Tools → Global Options → Appearance**.\
+    -   Under **Editor theme**, select your preferred dark or light theme (e.g., “Tomorrow Night Bright” or “Solarized Light”).\
+2.  **Font & Size**:
+    -   In the same pane, choose a monospaced font (e.g., Consolas, Fira Code) and set size (10–14 pt).\
+3.  **Zoom In/Out**:
+    -   Use `Ctrl +` / `Ctrl –` (Windows/Linux) or `Cmd +` / `Cmd –` (macOS) to quickly adjust text size on the fly.
+
+------------------------------------------------------------------------
+
+### 3. Pane Layout & Visibility
+
+RStudio lets you rearrange its four panes:
+
+1.  **Tools → Global Options → Pane Layout**.\
+2.  Choose one of the presets (e.g., **Source/Console \| Environment/History \| Files/Plots/Packages/Help**), or drag-and-drop each pane to your desired quadrant.\
+3.  **Show/Hide Panes**:
+    -   Use the small X icon on any pane’s title bar to collapse it.\
+    -   Restore via **View → Panes → Show \[Pane Name\]**.
+
+> **Shortcut**: `Shift + Esc` hides the current pane.
+
+------------------------------------------------------------------------
+
+### 4. Custom Code Snippets and Addins
+
+1.  **Code Snippets**:
+    -   **Tools → Global Options → Code → Edit Snippets**.\
+
+    -   Define your own shortcuts, e.g.:
+
+        ```         
+        snippet fun  
+          function(${1:args}) {\n\t${0}\n}  
+        ```
+
+        Typing `fun` + Tab expands into the function skeleton.\
+2.  **Addins**:
+    -   Install packages that supply addins (e.g., `datapasta`, `reprex`).\
+    -   After installation, find them under **Addins → Browse Addins** and tick those you use frequently.\
+    -   You can also assign keyboard shortcuts via **Tools → Modify Keyboard Shortcuts**.
+
+------------------------------------------------------------------------
+
+### 5. Keyboard Shortcuts Cheat Sheet
+
+-   **Run current line**: `Ctrl + Enter` / `Cmd + Enter`\
+-   **Run selection / run to next**: `Ctrl + Alt + R` / `Cmd + Option + R`\
+-   **Find in file**: `Ctrl + F` / `Cmd + F`\
+-   **Go to File/Function**: `Ctrl + .` / `Cmd + .`\
+-   **Build R Package**: `Ctrl + Shift + B` / `Cmd + Shift + B`\
+-   **Insert Pipe Operator**: `Ctrl + Shift + M` / `Cmd + Shift + M`
+
+For a complete list, open **Help → Keyboard Shortcuts Help**.
+
+------------------------------------------------------------------------

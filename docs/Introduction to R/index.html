@@ -164,7 +164,14 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#rstudio-layout-and-panes" id="toc-rstudio-layout-and-panes" class="nav-link" data-scroll-target="#rstudio-layout-and-panes">RStudio Layout and Panes</a></li>
   </ul></li>
-  <li><a href="#customising-your-workspace" id="toc-customising-your-workspace" class="nav-link" data-scroll-target="#customising-your-workspace">Customising Your Workspace</a></li>
+  <li><a href="#customising-your-rstudio-workspace" id="toc-customising-your-rstudio-workspace" class="nav-link" data-scroll-target="#customising-your-rstudio-workspace">Customising Your RStudio Workspace</a>
+  <ul class="collapse">
+  <li><a href="#installing-github-copilot-in-rstudio" id="toc-installing-github-copilot-in-rstudio" class="nav-link" data-scroll-target="#installing-github-copilot-in-rstudio">1. Installing GitHub Copilot in RStudio</a></li>
+  <li><a href="#changing-appearance-themes-fonts" id="toc-changing-appearance-themes-fonts" class="nav-link" data-scroll-target="#changing-appearance-themes-fonts">2. Changing Appearance (Themes &amp; Fonts)</a></li>
+  <li><a href="#pane-layout-visibility" id="toc-pane-layout-visibility" class="nav-link" data-scroll-target="#pane-layout-visibility">3. Pane Layout &amp; Visibility</a></li>
+  <li><a href="#custom-code-snippets-and-addins" id="toc-custom-code-snippets-and-addins" class="nav-link" data-scroll-target="#custom-code-snippets-and-addins">4. Custom Code Snippets and Addins</a></li>
+  <li><a href="#keyboard-shortcuts-cheat-sheet" id="toc-keyboard-shortcuts-cheat-sheet" class="nav-link" data-scroll-target="#keyboard-shortcuts-cheat-sheet">5. Keyboard Shortcuts Cheat Sheet</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -287,20 +294,130 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="customising-your-workspace" class="level2">
-<h2 class="anchored" data-anchor-id="customising-your-workspace">Customising Your Workspace</h2>
+<section id="customising-your-rstudio-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="customising-your-rstudio-workspace">Customising Your RStudio Workspace</h2>
+<p>RStudio’s IDE is highly configurable. Below are step-by-step instructions to tailor the environment for productivity, including how to install GitHub Copilot support.</p>
+<section id="installing-github-copilot-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="installing-github-copilot-in-rstudio">1. Installing GitHub Copilot in RStudio</h3>
+<ol type="1">
+<li><strong>Prerequisite</strong>: You need RStudio 2023.06.1 or later and a valid GitHub Copilot subscription.<br>
+</li>
+<li><strong>Install the Extension</strong>:
 <ul>
-<li><strong>Themes</strong>: Change editor theme under <em>Tools → Global Options → Appearance</em>. Options include light (TextMate, Solarized Light) and dark (Cobalt, Monokai).</li>
-<li><strong>Pane Layout</strong>: Move panes around under <em>View → Panes → Pane Layout…</em>; drag and swap quadrants.</li>
-<li><strong>Code Completion</strong>: Ensure <em>Enable code completion</em> is ticked in <em>Global Options → Code → Completion</em>.</li>
-<li><strong>Add-Ons</strong>:
-<ul>
-<li><strong>Git/GitHub</strong>: Integrate under <em>Global Options → Git/SVN</em>; enable version control for your project.</li>
-<li><strong>AI Assistants</strong>: Use extensions like GitHub Copilot for RMarkdown via <em>Tools → Addins</em>.</li>
+<li>In RStudio, go to <strong>Tools → Global Options → Visual Studio Code → Enable VS Code extensions</strong>.<br>
+</li>
+<li>Click <strong>Install</strong> when prompted; RStudio will download the VS Code extension host.<br>
+</li>
 </ul></li>
+<li><strong>Enable Copilot</strong>:
+<ul>
+<li>Restart RStudio.<br>
+</li>
+<li>Open <strong>Tools → Addins → Browse Addins</strong>, search for “GitHub Copilot”, and click <strong>Install</strong>.<br>
+</li>
+<li>After installation, Copilot icons appear in the toolbar.<br>
+</li>
+</ul></li>
+<li><strong>Authenticate</strong>:
+<ul>
+<li>Click the Copilot icon (a small airplane) in the top-right of the Source pane.<br>
+</li>
+<li>A dialog opens: click <strong>Sign in with GitHub</strong>, follow the browser prompts, and authorise Copilot.<br>
+</li>
+<li>Back in RStudio, you should see “Copilot: Enabled” in the status bar.</li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Pro tip</strong>: Use <code>Alt + \</code> (Windows/Linux) or <code>Option + \</code> (macOS) to trigger Copilot suggestions inline.</p>
+</blockquote>
+<hr>
+</section>
+<section id="changing-appearance-themes-fonts" class="level3">
+<h3 class="anchored" data-anchor-id="changing-appearance-themes-fonts">2. Changing Appearance (Themes &amp; Fonts)</h3>
+<ol type="1">
+<li><strong>Editor Theme</strong>:
+<ul>
+<li><strong>Tools → Global Options → Appearance</strong>.<br>
+</li>
+<li>Under <strong>Editor theme</strong>, select your preferred dark or light theme (e.g., “Tomorrow Night Bright” or “Solarized Light”).<br>
+</li>
+</ul></li>
+<li><strong>Font &amp; Size</strong>:
+<ul>
+<li>In the same pane, choose a monospaced font (e.g., Consolas, Fira Code) and set size (10–14 pt).<br>
+</li>
+</ul></li>
+<li><strong>Zoom In/Out</strong>:
+<ul>
+<li>Use <code>Ctrl +</code> / <code>Ctrl –</code> (Windows/Linux) or <code>Cmd +</code> / <code>Cmd –</code> (macOS) to quickly adjust text size on the fly.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="pane-layout-visibility" class="level3">
+<h3 class="anchored" data-anchor-id="pane-layout-visibility">3. Pane Layout &amp; Visibility</h3>
+<p>RStudio lets you rearrange its four panes:</p>
+<ol type="1">
+<li><strong>Tools → Global Options → Pane Layout</strong>.<br>
+</li>
+<li>Choose one of the presets (e.g., <strong>Source/Console | Environment/History | Files/Plots/Packages/Help</strong>), or drag-and-drop each pane to your desired quadrant.<br>
+</li>
+<li><strong>Show/Hide Panes</strong>:
+<ul>
+<li>Use the small X icon on any pane’s title bar to collapse it.<br>
+</li>
+<li>Restore via <strong>View → Panes → Show [Pane Name]</strong>.</li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Shortcut</strong>: <code>Shift + Esc</code> hides the current pane.</p>
+</blockquote>
+<hr>
+</section>
+<section id="custom-code-snippets-and-addins" class="level3">
+<h3 class="anchored" data-anchor-id="custom-code-snippets-and-addins">4. Custom Code Snippets and Addins</h3>
+<ol type="1">
+<li><strong>Code Snippets</strong>:
+<ul>
+<li><p><strong>Tools → Global Options → Code → Edit Snippets</strong>.<br>
+</p></li>
+<li><p>Define your own shortcuts, e.g.:</p>
+<pre><code>snippet fun  
+  function(${1:args}) {\n\t${0}\n}  </code></pre>
+<p>Typing <code>fun</code> + Tab expands into the function skeleton.<br>
+</p></li>
+</ul></li>
+<li><strong>Addins</strong>:
+<ul>
+<li>Install packages that supply addins (e.g., <code>datapasta</code>, <code>reprex</code>).<br>
+</li>
+<li>After installation, find them under <strong>Addins → Browse Addins</strong> and tick those you use frequently.<br>
+</li>
+<li>You can also assign keyboard shortcuts via <strong>Tools → Modify Keyboard Shortcuts</strong>.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="keyboard-shortcuts-cheat-sheet" class="level3">
+<h3 class="anchored" data-anchor-id="keyboard-shortcuts-cheat-sheet">5. Keyboard Shortcuts Cheat Sheet</h3>
+<ul>
+<li><strong>Run current line</strong>: <code>Ctrl + Enter</code> / <code>Cmd + Enter</code><br>
+</li>
+<li><strong>Run selection / run to next</strong>: <code>Ctrl + Alt + R</code> / <code>Cmd + Option + R</code><br>
+</li>
+<li><strong>Find in file</strong>: <code>Ctrl + F</code> / <code>Cmd + F</code><br>
+</li>
+<li><strong>Go to File/Function</strong>: <code>Ctrl + .</code> / <code>Cmd + .</code><br>
+</li>
+<li><strong>Build R Package</strong>: <code>Ctrl + Shift + B</code> / <code>Cmd + Shift + B</code><br>
+</li>
+<li><strong>Insert Pipe Operator</strong>: <code>Ctrl + Shift + M</code> / <code>Cmd + Shift + M</code></li>
 </ul>
+<p>For a complete list, open <strong>Help → Keyboard Shortcuts Help</strong>.</p>
+<hr>
 
 
+</section>
 </section>
 </section>
 
