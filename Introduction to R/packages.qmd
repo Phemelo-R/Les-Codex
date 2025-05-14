@@ -1,122 +1,221 @@
 ---
-title: "R Packages"
+title: "Key R Packages"
 format: html
+toc: true
 ---
 
-# R Packages for Data Science
+# Key R Packages for Data Science
 
-Packages in R are collections of functions, data, and compiled code that extend base R capabilities. We will cover installation, loading, essential package ecosystems, and practical examples.
+R’s power lies in its rich package ecosystem. In this lesson you will learn how to:
+
+1.  Install and load packages\
+2.  Navigate the **tidyverse** meta-package and its components\
+3.  Use **vegan** for ecological analyses\
+4.  Explore several other essential packages
+
+All examples assume you have installed and loaded the packages as shown below.
+
+------------------------------------------------------------------------
 
 ## 1. Installing Packages
 
-### Selecting a CRAN mirror
-
-Before installing, ensure you have a CRAN mirror set. When you first invoke `install.packages()`, R will prompt you to choose a mirror. Select one geographically close to you for speed.
-
 ```{r eval=FALSE}
-# Install core packages from CRAN 
-install.packages("tidyverse") # data manipulation & visualization
+# Install core data-science packages from CRAN 
+install.packages("tidyverse") # includes ggplot2, dplyr, tidyr, readr, purrr, etc. 
 install.packages("vegan", repos = "https://cloud.r-project.org") 
-install.packages("readr", repos = "https://cloud.r-project.org") 
 install.packages("sf", repos = "https://cloud.r-project.org") 
-install.packages("lubridate") # date-time utilities 
-install.packages("stringr") # string manipulation 
+install.packages("lubridate") 
+install.packages("stringr") 
 install.packages("purrr")
 ```
 
--   **`install.packages("pkg")`** downloads source or binary from CRAN and installs it into your library (use `getwd()` if you’re unsure where your default library is located).
+**Tip:** Run these commands interactively in your console. To avoid mirror prompts, specify `repos = "https://cloud.r-project.org"`.
 
--   To specify a mirror programmatically, we use: repos = "<https://cloud.r-project.org>"
+------------------------------------------------------------------------
 
 ## 2. Loading Packages
 
-Once installed, load a package with `library()` or `require()`:
+```{r include=FALSE}
 
-```{r}
-library(tidyverse)   # dplyr, ggplot2, tidyr, readr, purrr, etc.
-library(vegan)       # community ecology tools
-library(readr)       # fast data import
-library(sf)          # spatial data handling
-library(lubridate)   # date-time parsing
-library(stringr)     # string processing
-library(purrr)       # functional pipelines
+library(tidyverse)   # core tools for data manipulation & visualization
+library(vegan)       # community ecology and multivariate methods
+library(sf)          # simple features for spatial data
+library(lubridate)   # date-time parsing and arithmetic
+library(stringr)     # string operations
+library(purrr)       # functional programming tools
 ```
 
--   **`library(pkg, quietly = TRUE)`** loads without startup messages.
--   **`conflicts()`** lists any masking of functions from different packages.
+-   Use `library(pkg, quietly = TRUE)` to suppress startup messages.
 
-## 3. Essential Package Ecosystems
+-   `conflicts()` shows any function name clashes.
 
-### tidyverse
+------------------------------------------------------------------------
 
-A coherent suite designed for data science by Hadley Wickham and team: - **`dplyr`**: Data manipulation grammar (`filter()`, `select()`, `mutate()`, `summarise()`, `arrange()`). - **`ggplot2`**: Grammar of graphics for plotting. - **`tidyr`**: Tools to reshape (`pivot_longer`, `pivot_wider`). - **`readr`**: High-performance data import (`read_csv`, `read_delim`).
+## 3. The **tidyverse** Ecosystem
 
-#### tidyverse Example
+**tidyverse** is a coherent suite by Hadley Wickham & team. It shares a uniform syntax and philosophy:
+
+### 3.1 dplyr
+
+A grammar for data manipulation:
+
+-   `filter(df, condition)`
+
+-   `select(df, cols)`
+
+-   `mutate(df, new = expr)`
+
+-   `arrange(df, cols)`
+
+-   `summarise(df, agg = func(col))`
 
 ```{r}
-# Import a CSV via readr
-# df <- read_csv("path/to/file.csv")
 
-# Using built-in iris dataset as tibble
-df <- as_tibble(iris)
-
-# Chain operations with dplyr
-df_summary <- df %>%
-  filter(Sepal.Length > 5) %>%
-  group_by(Species) %>%
+# Example: summarise mtcars by cyl
+df <- as_tibble(mtcars)
+df %>% 
+  group_by(cyl) %>%
   summarise(
-    mean_sep = mean(Sepal.Length),
-    sd_sep   = sd(Sepal.Length),
-    count    = n()
+    avg_mpg = mean(mpg),
+    max_hp  = max(hp),
+    n       = n()
   )
-
-# Display summary
-df_summary
-
-# Create a scatter plot with ggplot2
-ggplot(df, aes(x = Sepal.Length, y = Petal.Length, colour = Species)) +
-  geom_point(alpha = 0.7) +
-  labs(title = "Sepal vs Petal Length by Species")
 ```
 
-### vegan
+### 3.2 ggplot2
 
-Community ecology and multivariate statistics: - **`diversity(x, index = "shannon")`**: Shannon diversity index. - **`metaMDS(x, distance = "bray")`**: Non-metric multidimensional scaling. - **`rda(x, y)`**: Redundancy analysis (constrained ordination).
+A layered grammar of graphics:
 
-#### vegan Example
+-   `ggplot(data, aes(x, y, ...))`
+
+-   `geom_point()`, `geom_line()`, `geom_histogram()`
+
+-   `labs()`, `theme_*()`
 
 ```{r}
-# Load datasets
-library(vegan)
+
+ggplot(df, aes(x = factor(cyl), y = mpg)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "MPG by Cylinder Count",
+    x     = "Cylinders",
+    y     = "MPG"
+  )
+```
+
+### 3.3 tidyr
+
+Tools to tidy data:
+
+-   `pivot_longer(df, cols, names_to, values_to)`
+
+-   `pivot_wider(df, names_from, values_from)`
+
+```{r}
+
+# Convert mtcars summary to long form
+long_df <- df %>%
+  pivot_longer(
+    cols = c(mpg, hp),
+    names_to  = "metric",
+    values_to = "value"
+  )
+head(long_df)
+```
+
+### 3.4 readr
+
+Fast data import:
+
+-   `read_csv("file.csv")`
+
+-   `read_delim("file.txt", delim = "\t")`
+
+```{r eval=FALSE}
+
+# Example: df2 <- read_csv("data/mydata.csv")
+```
+
+### 3.5 purrr
+
+Functional programming:
+
+-   `map(df, f)` applies `f` to each column
+
+-   `map_df(list_of_dfs, bind_rows)` combines multiple data frames
+
+```{r}
+
+# Example: compute mean of each numeric column
+map_dbl(df, ~ if(is.numeric(.x)) mean(.x) else NA_real_)
+```
+
+------------------------------------------------------------------------
+
+## 4. The **vegan** Package
+
+Specialised for community ecology:
+
+-   `diversity(x, index = "shannon")` – Shannon diversity index
+
+-   `metaMDS(x, distance = "bray", k = 2)` – non-metric MDS ordination
+
+-   `rda(x, y)` – redundancy analysis (constrained ordination)
+
+```{r}
+
+# Example using dune dataset
 data(dune)
-data(dune.env)
-
-# Calculate Shannon diversity by site
 div_shannon <- diversity(dune, index = "shannon")
-print(div_shannon)
-
-# Perform NMDS ordination
-nmds_res <- metaMDS(dune, distance = "bray", k = 2)
-plot(nmds_res, type = "n")
-text(nmds_res, display = "sites")
+meta  <- metaMDS(dune, distance = "bray", k = 2)
+plot(meta, type = "n"); text(meta, display = "sites")
 ```
 
-### Other Noteworthy Packages
+------------------------------------------------------------------------
 
--   **sf**: Simple features for spatial vector data. Use `st_read()` to import spatial files.
--   **lubridate**: Simplifies date-time parsing (`ymd()`, `hms()`) and arithmetic.
--   **stringr**: Consistent and user-friendly string manipulation (`str_detect`, `str_replace`).
--   **purrr**: Functional programming tools to iterate (`map`, `map_df`).
+## 5. Other Essential Packages
 
-#### Example: Loading and using `sf`
+### sf (Simple Features)
+
+Handles spatial vector data:
 
 ```{r}
-# Install if needed
-# install.packages("sf")
 
-library(sf)
-# Read a shapefile (replace with your own path)
-# shapefile <- st_read("data/your_shapefile.shp")
-# Print geometry summary
-# print(shapefile)
+# sf::st_read("path/to/shapefile.shp")
 ```
+
+### lubridate
+
+Simplifies date-time work:
+
+-   `ymd("2022-01-15")`, `hms("12:30:45")`
+
+-   `today()`, `now()`, `year()`, `month()`, `day()`
+
+```{r}
+
+d <- ymd("2025-05-14")
+year(d); month(d); wday(d, label = TRUE)
+```
+
+### stringr
+
+Consistent string manipulation:
+
+-   `str_detect(string, pattern)`
+
+-   `str_replace(string, pattern, replacement)`
+
+```{r}
+
+words <- c("data", "science", "analysis")
+str_detect(words, "a")    # TRUE, TRUE, FALSE
+```
+
+### purrr
+
+(see above) for advanced iteration.
+
+------------------------------------------------------------------------
+
+By the end of this lesson you should understand the core tidyverse packages, how to manipulate, visualise, and model data, and where to go next for specialised analyses. Proceed to the **Error Bypass Atlas** or return to **Introduction to R**.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R Packages – Les Codex</title>
+<title>Key R Packages – Les Codex</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,9 +128,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Tutorials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../Introduction to R/index.html">
+ <span class="dropdown-text">Introduction to R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Introduction to R/packages.html">
+ <span class="dropdown-text">Key Packages</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-python-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Python Tutorials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-python-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../Python Tutorials/index.qmd">
+ <span class="dropdown-text">Getting Started</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Python Tutorials/packages.qmd">
+ <span class="dropdown-text">Data Science Stack</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../Introduction to R/index.html"> 
-<span class="menu-text">Introduction to R</span></a>
+    <a class="nav-link" href="../Error Bypass Atlas/index.qmd"> 
+<span class="menu-text">Error Bypass</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -154,18 +184,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-packages-for-data-science" id="toc-r-packages-for-data-science" class="nav-link active" data-scroll-target="#r-packages-for-data-science">R Packages for Data Science</a>
+  <li><a href="#key-r-packages-for-data-science" id="toc-key-r-packages-for-data-science" class="nav-link active" data-scroll-target="#key-r-packages-for-data-science">Key R Packages for Data Science</a>
   <ul class="collapse">
-  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">1. Installing Packages</a>
-  <ul class="collapse">
-  <li><a href="#selecting-a-cran-mirror" id="toc-selecting-a-cran-mirror" class="nav-link" data-scroll-target="#selecting-a-cran-mirror">Selecting a CRAN mirror</a></li>
-  </ul></li>
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">1. Installing Packages</a></li>
   <li><a href="#loading-packages" id="toc-loading-packages" class="nav-link" data-scroll-target="#loading-packages">2. Loading Packages</a></li>
-  <li><a href="#essential-package-ecosystems" id="toc-essential-package-ecosystems" class="nav-link" data-scroll-target="#essential-package-ecosystems">3. Essential Package Ecosystems</a>
+  <li><a href="#the-tidyverse-ecosystem" id="toc-the-tidyverse-ecosystem" class="nav-link" data-scroll-target="#the-tidyverse-ecosystem">3. The <strong>tidyverse</strong> Ecosystem</a>
   <ul class="collapse">
-  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">tidyverse</a></li>
-  <li><a href="#vegan" id="toc-vegan" class="nav-link" data-scroll-target="#vegan">vegan</a></li>
-  <li><a href="#other-noteworthy-packages" id="toc-other-noteworthy-packages" class="nav-link" data-scroll-target="#other-noteworthy-packages">Other Noteworthy Packages</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr">3.1 dplyr</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">3.2 ggplot2</a></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr">3.3 tidyr</a></li>
+  <li><a href="#readr" id="toc-readr" class="nav-link" data-scroll-target="#readr">3.4 readr</a></li>
+  <li><a href="#purrr" id="toc-purrr" class="nav-link" data-scroll-target="#purrr">3.5 purrr</a></li>
+  </ul></li>
+  <li><a href="#the-vegan-package" id="toc-the-vegan-package" class="nav-link" data-scroll-target="#the-vegan-package">4. The <strong>vegan</strong> Package</a></li>
+  <li><a href="#other-essential-packages" id="toc-other-essential-packages" class="nav-link" data-scroll-target="#other-essential-packages">5. Other Essential Packages</a>
+  <ul class="collapse">
+  <li><a href="#sf-simple-features" id="toc-sf-simple-features" class="nav-link" data-scroll-target="#sf-simple-features">sf (Simple Features)</a></li>
+  <li><a href="#lubridate" id="toc-lubridate" class="nav-link" data-scroll-target="#lubridate">lubridate</a></li>
+  <li><a href="#stringr" id="toc-stringr" class="nav-link" data-scroll-target="#stringr">stringr</a></li>
+  <li><a href="#purrr-1" id="toc-purrr-1" class="nav-link" data-scroll-target="#purrr-1">purrr</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -176,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R Packages</h1>
+<h1 class="title">Key R Packages</h1>
 </div>
 
 
@@ -193,172 +230,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="r-packages-for-data-science" class="level1">
-<h1>R Packages for Data Science</h1>
-<p>Packages in R are collections of functions, data, and compiled code that extend base R capabilities. We will cover installation, loading, essential package ecosystems, and practical examples.</p>
+<section id="key-r-packages-for-data-science" class="level1">
+<h1>Key R Packages for Data Science</h1>
+<p>R’s power lies in its rich package ecosystem. In this lesson you will learn how to:</p>
+<ol type="1">
+<li>Install and load packages<br>
+</li>
+<li>Navigate the <strong>tidyverse</strong> meta-package and its components<br>
+</li>
+<li>Use <strong>vegan</strong> for ecological analyses<br>
+</li>
+<li>Explore several other essential packages</li>
+</ol>
+<p>All examples assume you have installed and loaded the packages as shown below.</p>
+<hr>
 <section id="installing-packages" class="level2">
 <h2 class="anchored" data-anchor-id="installing-packages">1. Installing Packages</h2>
-<section id="selecting-a-cran-mirror" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-a-cran-mirror">Selecting a CRAN mirror</h3>
-<p>Before installing, ensure you have a CRAN mirror set. When you first invoke <code>install.packages()</code>, R will prompt you to choose a mirror. Select one geographically close to you for speed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install core packages from CRAN </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co"># data manipulation &amp; visualization</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install core data-science packages from CRAN </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co"># includes ggplot2, dplyr, tidyr, readr, purrr, etc. </span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"vegan"</span>, <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org"</span>) </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>, <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org"</span>) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>, <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org"</span>) </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lubridate"</span>) <span class="co"># date-time utilities </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>) <span class="co"># string manipulation </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>, <span class="at">repos =</span> <span class="st">"https://cloud.r-project.org"</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lubridate"</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"stringr"</span>) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><p><strong><code>install.packages("pkg")</code></strong> downloads source or binary from CRAN and installs it into your library (use <code>getwd()</code> if you’re unsure where your default library is located).</p></li>
-<li><p>To specify a mirror programmatically, we use: repos = “<a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>”</p></li>
-</ul>
-</section>
+<p><strong>Tip:</strong> Run these commands interactively in your console. To avoid mirror prompts, specify <code>repos = "https://cloud.r-project.org"</code>.</p>
+<hr>
 </section>
 <section id="loading-packages" class="level2">
 <h2 class="anchored" data-anchor-id="loading-packages">2. Loading Packages</h2>
-<p>Once installed, load a package with <code>library()</code> or <code>require()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   <span class="co"># dplyr, ggplot2, tidyr, readr, purrr, etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)       <span class="co"># community ecology tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: permute
-Loading required package: lattice</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)       <span class="co"># fast data import</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)          <span class="co"># spatial data handling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)   <span class="co"># date-time parsing</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)     <span class="co"># string processing</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)       <span class="co"># functional pipelines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ul>
-<li><strong><code>library(pkg, quietly = TRUE)</code></strong> loads without startup messages.</li>
-<li><strong><code>conflicts()</code></strong> lists any masking of functions from different packages.</li>
+<li><p>Use <code>library(pkg, quietly = TRUE)</code> to suppress startup messages.</p></li>
+<li><p><code>conflicts()</code> shows any function name clashes.</p></li>
 </ul>
+<hr>
 </section>
-<section id="essential-package-ecosystems" class="level2">
-<h2 class="anchored" data-anchor-id="essential-package-ecosystems">3. Essential Package Ecosystems</h2>
-<section id="tidyverse" class="level3">
-<h3 class="anchored" data-anchor-id="tidyverse">tidyverse</h3>
-<p>A coherent suite designed for data science by Hadley Wickham and team: - <strong><code>dplyr</code></strong>: Data manipulation grammar (<code>filter()</code>, <code>select()</code>, <code>mutate()</code>, <code>summarise()</code>, <code>arrange()</code>). - <strong><code>ggplot2</code></strong>: Grammar of graphics for plotting. - <strong><code>tidyr</code></strong>: Tools to reshape (<code>pivot_longer</code>, <code>pivot_wider</code>). - <strong><code>readr</code></strong>: High-performance data import (<code>read_csv</code>, <code>read_delim</code>).</p>
-<section id="tidyverse-example" class="level4">
-<h4 class="anchored" data-anchor-id="tidyverse-example">tidyverse Example</h4>
+<section id="the-tidyverse-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="the-tidyverse-ecosystem">3. The <strong>tidyverse</strong> Ecosystem</h2>
+<p><strong>tidyverse</strong> is a coherent suite by Hadley Wickham &amp; team. It shares a uniform syntax and philosophy:</p>
+<section id="dplyr" class="level3">
+<h3 class="anchored" data-anchor-id="dplyr">3.1 dplyr</h3>
+<p>A grammar for data manipulation:</p>
+<ul>
+<li><p><code>filter(df, condition)</code></p></li>
+<li><p><code>select(df, cols)</code></p></li>
+<li><p><code>mutate(df, new = expr)</code></p></li>
+<li><p><code>arrange(df, cols)</code></p></li>
+<li><p><code>summarise(df, agg = func(col))</code></p></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import a CSV via readr</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read_csv("path/to/file.csv")</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using built-in iris dataset as tibble</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(iris)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Chain operations with dplyr</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>df_summary <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_sep =</span> <span class="fu">mean</span>(Sepal.Length),</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_sep   =</span> <span class="fu">sd</span>(Sepal.Length),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">count    =</span> <span class="fu">n</span>()</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Display summary</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>df_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: summarise mtcars by cyl</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_hp  =</span> <span class="fu">max</span>(hp),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> <span class="fu">n</span>()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
-  Species    mean_sep sd_sep count
-  &lt;fct&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
-1 setosa         5.31  0.223    22
-2 versicolor     6.00  0.467    47
-3 virginica      6.62  0.593    49</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot with ggplot2</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">colour =</span> Species)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sepal vs Petal Length by Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="packages_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+    cyl avg_mpg max_hp     n
+  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1     4    26.7    113    11
+2     6    19.7    175     7
+3     8    15.1    335    14</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="vegan" class="level3">
-<h3 class="anchored" data-anchor-id="vegan">vegan</h3>
-<p>Community ecology and multivariate statistics: - <strong><code>diversity(x, index = "shannon")</code></strong>: Shannon diversity index. - <strong><code>metaMDS(x, distance = "bray")</code></strong>: Non-metric multidimensional scaling. - <strong><code>rda(x, y)</code></strong>: Redundancy analysis (constrained ordination).</p>
-<section id="vegan-example" class="level4">
-<h4 class="anchored" data-anchor-id="vegan-example">vegan Example</h4>
+<section id="ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot2">3.2 ggplot2</h3>
+<p>A layered grammar of graphics:</p>
+<ul>
+<li><p><code>ggplot(data, aes(x, y, ...))</code></p></li>
+<li><p><code>geom_point()</code>, <code>geom_line()</code>, <code>geom_histogram()</code></p></li>
+<li><p><code>labs()</code>, <code>theme_*()</code></p></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load datasets</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dune)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dune.env)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Shannon diversity by site</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>div_shannon <span class="ot">&lt;-</span> <span class="fu">diversity</span>(dune, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(div_shannon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       1        2        3        4        5        6        7        8 
-1.440482 2.252516 2.193749 2.426779 2.544421 2.345946 2.471733 2.434898 
-       9       10       11       12       13       14       15       16 
-2.493568 2.398613 2.106065 2.114495 2.099638 1.863680 1.979309 1.959795 
-      17       18       19       20 
-1.876274 2.079387 2.134024 2.048270 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform NMDS ordination</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nmds_res <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(dune, <span class="at">distance =</span> <span class="st">"bray"</span>, <span class="at">k =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Run 0 stress 0.1192678 
-Run 1 stress 0.1192678 
-... Procrustes: rmse 2.760631e-05  max resid 7.918863e-05 
-... Similar to previous best
-Run 2 stress 0.1183186 
-... New best solution
-... Procrustes: rmse 0.02027082  max resid 0.06495998 
-Run 3 stress 0.1886532 
-Run 4 stress 0.1192678 
-Run 5 stress 0.1192678 
-Run 6 stress 0.192224 
-Run 7 stress 0.1192678 
-Run 8 stress 0.1809579 
-Run 9 stress 0.1192678 
-Run 10 stress 0.1192679 
-Run 11 stress 0.1192678 
-Run 12 stress 0.1192678 
-Run 13 stress 0.3770267 
-Run 14 stress 0.1192679 
-Run 15 stress 0.1808911 
-Run 16 stress 0.1183186 
-... Procrustes: rmse 8.295968e-06  max resid 2.447404e-05 
-... Similar to previous best
-Run 17 stress 0.1183186 
-... Procrustes: rmse 7.602898e-06  max resid 2.150183e-05 
-... Similar to previous best
-Run 18 stress 0.1192678 
-Run 19 stress 0.1192678 
-Run 20 stress 0.1812932 
-*** Best solution repeated 2 times</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nmds_res, <span class="at">type =</span> <span class="st">"n"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(nmds_res, <span class="at">display =</span> <span class="st">"sites"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"MPG by Cylinder Count"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x     =</span> <span class="st">"Cylinders"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y     =</span> <span class="st">"MPG"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -368,30 +324,183 @@ Run 20 stress 0.1812932
 </div>
 </div>
 </section>
-</section>
-<section id="other-noteworthy-packages" class="level3">
-<h3 class="anchored" data-anchor-id="other-noteworthy-packages">Other Noteworthy Packages</h3>
+<section id="tidyr" class="level3">
+<h3 class="anchored" data-anchor-id="tidyr">3.3 tidyr</h3>
+<p>Tools to tidy data:</p>
 <ul>
-<li><strong>sf</strong>: Simple features for spatial vector data. Use <code>st_read()</code> to import spatial files.</li>
-<li><strong>lubridate</strong>: Simplifies date-time parsing (<code>ymd()</code>, <code>hms()</code>) and arithmetic.</li>
-<li><strong>stringr</strong>: Consistent and user-friendly string manipulation (<code>str_detect</code>, <code>str_replace</code>).</li>
-<li><strong>purrr</strong>: Functional programming tools to iterate (<code>map</code>, <code>map_df</code>).</li>
+<li><p><code>pivot_longer(df, cols, names_to, values_to)</code></p></li>
+<li><p><code>pivot_wider(df, names_from, values_from)</code></p></li>
 </ul>
-<section id="example-loading-and-using-sf" class="level4">
-<h4 class="anchored" data-anchor-id="example-loading-and-using-sf">Example: Loading and using <code>sf</code></h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install if needed</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("sf")</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a shapefile (replace with your own path)</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># shapefile &lt;- st_read("data/your_shapefile.shp")</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print geometry summary</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(shapefile)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert mtcars summary to long form</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>long_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(mpg, hp),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"metric"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(long_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+    cyl  disp  drat    wt  qsec    vs    am  gear  carb metric value
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+1     6   160  3.9   2.62  16.5     0     1     4     4 mpg     21  
+2     6   160  3.9   2.62  16.5     0     1     4     4 hp     110  
+3     6   160  3.9   2.88  17.0     0     1     4     4 mpg     21  
+4     6   160  3.9   2.88  17.0     0     1     4     4 hp     110  
+5     4   108  3.85  2.32  18.6     1     1     4     1 mpg     22.8
+6     4   108  3.85  2.32  18.6     1     1     4     1 hp      93  </code></pre>
 </div>
-
-
+</div>
 </section>
+<section id="readr" class="level3">
+<h3 class="anchored" data-anchor-id="readr">3.4 readr</h3>
+<p>Fast data import:</p>
+<ul>
+<li><p><code>read_csv("file.csv")</code></p></li>
+<li><p><code>read_delim("file.txt", delim = "\t")</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: df2 &lt;- read_csv("data/mydata.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="purrr" class="level3">
+<h3 class="anchored" data-anchor-id="purrr">3.5 purrr</h3>
+<p>Functional programming:</p>
+<ul>
+<li><p><code>map(df, f)</code> applies <code>f</code> to each column</p></li>
+<li><p><code>map_df(list_of_dfs, bind_rows)</code> combines multiple data frames</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: compute mean of each numeric column</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(df, <span class="sc">~</span> <span class="cf">if</span>(<span class="fu">is.numeric</span>(.x)) <span class="fu">mean</span>(.x) <span class="cf">else</span> <span class="cn">NA_real_</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       mpg        cyl       disp         hp       drat         wt       qsec 
+ 20.090625   6.187500 230.721875 146.687500   3.596563   3.217250  17.848750 
+        vs         am       gear       carb 
+  0.437500   0.406250   3.687500   2.812500 </code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="the-vegan-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-vegan-package">4. The <strong>vegan</strong> Package</h2>
+<p>Specialised for community ecology:</p>
+<ul>
+<li><p><code>diversity(x, index = "shannon")</code> – Shannon diversity index</p></li>
+<li><p><code>metaMDS(x, distance = "bray", k = 2)</code> – non-metric MDS ordination</p></li>
+<li><p><code>rda(x, y)</code> – redundancy analysis (constrained ordination)</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using dune dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dune)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>div_shannon <span class="ot">&lt;-</span> <span class="fu">diversity</span>(dune, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>meta  <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(dune, <span class="at">distance =</span> <span class="st">"bray"</span>, <span class="at">k =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Run 0 stress 0.1192678 
+Run 1 stress 0.1183186 
+... New best solution
+... Procrustes: rmse 0.02027068  max resid 0.0649625 
+Run 2 stress 0.1183186 
+... Procrustes: rmse 3.628051e-05  max resid 0.0001072331 
+... Similar to previous best
+Run 3 stress 0.1183186 
+... Procrustes: rmse 4.962724e-06  max resid 1.437127e-05 
+... Similar to previous best
+Run 4 stress 0.1192678 
+Run 5 stress 0.1192678 
+Run 6 stress 0.1192678 
+Run 7 stress 0.1183186 
+... Procrustes: rmse 1.058477e-05  max resid 3.339494e-05 
+... Similar to previous best
+Run 8 stress 0.1192678 
+Run 9 stress 0.1192678 
+Run 10 stress 0.1812932 
+Run 11 stress 0.2003482 
+Run 12 stress 0.1183186 
+... Procrustes: rmse 2.073742e-06  max resid 6.065277e-06 
+... Similar to previous best
+Run 13 stress 0.1192679 
+Run 14 stress 0.1808911 
+Run 15 stress 0.1183186 
+... Procrustes: rmse 3.75847e-06  max resid 6.208995e-06 
+... Similar to previous best
+Run 16 stress 0.1809577 
+Run 17 stress 0.2045511 
+Run 18 stress 0.1183186 
+... Procrustes: rmse 9.026092e-06  max resid 2.757918e-05 
+... Similar to previous best
+Run 19 stress 0.1192679 
+Run 20 stress 0.1183186 
+... Procrustes: rmse 5.615075e-06  max resid 1.669653e-05 
+... Similar to previous best
+*** Best solution repeated 7 times</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(meta, <span class="at">type =</span> <span class="st">"n"</span>); <span class="fu">text</span>(meta, <span class="at">display =</span> <span class="st">"sites"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="packages_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="other-essential-packages" class="level2">
+<h2 class="anchored" data-anchor-id="other-essential-packages">5. Other Essential Packages</h2>
+<section id="sf-simple-features" class="level3">
+<h3 class="anchored" data-anchor-id="sf-simple-features">sf (Simple Features)</h3>
+<p>Handles spatial vector data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sf::st_read("path/to/shapefile.shp")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lubridate" class="level3">
+<h3 class="anchored" data-anchor-id="lubridate">lubridate</h3>
+<p>Simplifies date-time work:</p>
+<ul>
+<li><p><code>ymd("2022-01-15")</code>, <code>hms("12:30:45")</code></p></li>
+<li><p><code>today()</code>, <code>now()</code>, <code>year()</code>, <code>month()</code>, <code>day()</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2025-05-14"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(d); <span class="fu">month</span>(d); <span class="fu">wday</span>(d, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2025</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Wed
+Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
+</div>
+</div>
+</section>
+<section id="stringr" class="level3">
+<h3 class="anchored" data-anchor-id="stringr">stringr</h3>
+<p>Consistent string manipulation:</p>
+<ul>
+<li><p><code>str_detect(string, pattern)</code></p></li>
+<li><p><code>str_replace(string, pattern, replacement)</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"science"</span>, <span class="st">"analysis"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(words, <span class="st">"a"</span>)    <span class="co"># TRUE, TRUE, FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="purrr-1" class="level3">
+<h3 class="anchored" data-anchor-id="purrr-1">purrr</h3>
+<p>(see above) for advanced iteration.</p>
+<hr>
+<p>By the end of this lesson you should understand the core tidyverse packages, how to manipulate, visualise, and model data, and where to go next for specialised analyses. Proceed to the <strong>Error Bypass Atlas</strong> or return to <strong>Introduction to R</strong>.</p>
+
+
 </section>
 </section>
 </section>
