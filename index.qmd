@@ -28,25 +28,6 @@ This site is maintained as a living document. Contributions, criticisms, and alt
 
 ------------------------------------------------------------------------
 
-## Machine Learning Tutorials
-
-Discover the world of machine learning through practical tutorials and real-life examples. Whether you're a beginner or looking to deepen your knowledge, you'll find insightful content here.
-
--   Introduction to Machine Learning with R
--   Building Neural Networks in Python
--   Hands-on with TensorFlow
-
-------------------------------------------------------------------------
-
-## Explore R and Python Tutorials
-
-Get hands-on with data analysis and machine learning in both R and Python.
-
--   R Tutorials
--   Python Tutorials
-
-------------------------------------------------------------------------
-
 <footer>
 
 <p>Created with 💻 by <a href="https://github.com/Phemelo-R">Phemelo Rutlokoane</a></p>
