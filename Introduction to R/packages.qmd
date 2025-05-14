@@ -13,38 +13,33 @@ Packages in R are collections of functions, data, and compiled code that extend 
 
 Before installing, ensure you have a CRAN mirror set. When you first invoke `install.packages()`, R will prompt you to choose a mirror. Select one geographically close to you for speed.
 
-```{r}
-# Example: install tidyverse
-install.packages("tidyverse")
+```{r eval=FALSE}
+# Install core packages from CRAN 
+install.packages("tidyverse") # data manipulation & visualization
+install.packages("vegan", repos = "https://cloud.r-project.org") 
+install.packages("readr", repos = "https://cloud.r-project.org") 
+install.packages("sf", repos = "https://cloud.r-project.org") 
+install.packages("lubridate") # date-time utilities 
+install.packages("stringr") # string manipulation 
+install.packages("purrr")
 ```
 
 -   **`install.packages("pkg")`** downloads source or binary from CRAN and installs it into your library (use `getwd()` if you’re unsure where your default library is located).
 
--   To specify a mirror programmatically:
-
-    ``` r
-    install.packages("tidyverse", repos = "https://cloud.r-project.org")
-    ```
-
-### Updating Packages
-
-```{r}
-# Update all installed packages
-download.packages(repos = "https://cloud.r-project.org")
-# Or use utils function
-i <- old.packages()
-if (!is.null(i)) update.packages(ask = FALSE)
-```
+-   To specify a mirror programmatically, we use: repos = "<https://cloud.r-project.org>"
 
 ## 2. Loading Packages
 
 Once installed, load a package with `library()` or `require()`:
 
 ```{r}
-library(tidyverse)  # Loads core tidyverse packages
-tidyverse_conflicts()
-
-require(vegan)      # Alternative; returns TRUE if loaded
+library(tidyverse)   # dplyr, ggplot2, tidyr, readr, purrr, etc.
+library(vegan)       # community ecology tools
+library(readr)       # fast data import
+library(sf)          # spatial data handling
+library(lubridate)   # date-time parsing
+library(stringr)     # string processing
+library(purrr)       # functional pipelines
 ```
 
 -   **`library(pkg, quietly = TRUE)`** loads without startup messages.
