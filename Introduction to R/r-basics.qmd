@@ -5,71 +5,81 @@ format: html
 
 # R Basics
 
-Welcome to a foundational lesson on base R functions, datasets, and data exploration. Treat this as your first lecture: we will cover how to compute descriptive statistics, access built-in datasets, and view data within RStudio.
+Welcome to your first R lecture. We will explore fundamental functions for descriptive statistics, discover R’s built-in datasets, and practise viewing data in RStudio.
 
-## 1. Descriptive Statistics in Base R
+## 1. Computing Descriptive Statistics
 
-Without loading any packages, R provides functions to compute common statistics directly:
+Base R provides the following core functions without loading any extra packages:
 
 ```{r}
-# Create a numeric vector
-values <- c(12.5, 17.8, 9.3, 14.1, 11.7)
+# Sample numeric vector
+data_vec <- c(8.2, 5.4, 9.7, 6.1, 7.3, 8.9)
 
-# Arithmetic mean (average)
-mean_value <- mean(values)
-mean_value
+# Compute descriptive statistics
+mean_val   <- mean(data_vec)      # arithmetic mean
+sd_val     <- sd(data_vec)        # standard deviation
+median_val <- median(data_vec)    # median
+var_val    <- var(data_vec)       # variance
+quants     <- quantile(data_vec, probs = c(0.25, 0.5, 0.75))  # quartiles
+range_val  <- range(data_vec)     # min and max
 
-# Standard deviation (population default)
-sd_value <- sd(values)
-sd_value
-
-# Summary of vector (min, 1Q, median, mean, 3Q, max)
-summary(values)
+# Display results
+mean_val
+sd_val
+median_val
+var_val
+quants
+range_val
 ```
 
-**Explanation**: - `mean(x)`: sums all elements of `x` and divides by the count. - `sd(x)`: calculates the square root of the variance (with denominator `n-1`). - `summary(x)`: returns a six-number summary plus the mean.
+### Explanation of Functions
 
-You can also compute other measures: - **Median**: `median(values)` - **Variance**: `var(values)` - **Quantiles**: `quantile(values, probs = c(0.25, 0.5, 0.75))` - **Range**: `range(values)`
+-   `mean(x)`: average of the elements in `x`.
+-   `sd(x)`: sample standard deviation (denominator *n*−1).
+-   `median(x)`: middle value of sorted `x`.
+-   `var(x)`: sample variance.
+-   `quantile(x, probs)`: specified percentiles of `x`.
+-   `range(x)`: minimum and maximum values of `x`.
+
+Use `?function_name` (e.g., `?mean`) in the console to view documentation.
 
 ## 2. Built-in Datasets in R
 
-R includes numerous datasets for practice. To see all available datasets, run:
+R comes with many datasets. List them all with:
 
 ```{r}
-# List all datasets
+# Show available datasets
 data()
 ```
 
-Below are some key datasets you will encounter:
-
--   **iris**: Fisher's iris data (1936). Measures of sepal & petal lengths for three species of iris. 150 observations, 5 variables.
--   **mtcars**: Motor Trend Car Road Tests (1974). Fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
--   **airquality**: New York Air Quality Measurements (1973). Daily readings of ozone, solar radiation, wind, and temperature in New York.
--   **USArrests**: Violent Crime Rates by US State (1973). Murder, Assault, UrbanPop, and Rape statistics for 50 states.
--   **PlantGrowth**: Results of an experiment on plant weight under different treatments.
-
-To load and inspect a dataset:
+Below are commonly used examples:
 
 ```{r}
-# Load iris and view first rows
+# Inspect iris dataset
 data(iris)
 head(iris)
-
-# Summary of mtcars
-data(mtcars)
-summary(mtcars)
+summary(iris)
+str(iris)
 ```
+
+| Dataset | Description | Dimensions |
+|--------------|--------------------------------------------|--------------|
+| `iris` | Edgar Anderson’s measurements of iris flowers | 150 × 5 |
+| `mtcars` | Motor Trend car specifications and fuel consumption | 32 × 11 |
+| `airquality` | Daily air quality measurements in New York (1973) | 153 × 6 |
+| `CO2` | Carbon dioxide uptake in grass plants under different conditions | 84 × 5 |
+| `PlantGrowth` | Results of an experiment on plant weight under control and treat. | 30 × 2 |
 
 ## 3. Viewing Data in RStudio
 
-You have two main options:
+-   **View( )**: In the console or script, run:
 
-1.  **View() function**: Opens a spreadsheet-like viewer.
+    ```{r}
+    View(iris)
+    ```
 
-```{r}
-View(iris)
-```
+    This opens a spreadsheet-like viewer.
 
-2.  **Environment pane**: In RStudio, click the dataset name under **Environment** → **Data**. You can sort, filter, and search within this view.
+-   **Environment Pane**: Under the **Environment** tab, click a dataset name to inspect it interactively. Use the gear icon ⚙️ to show/hide columns.
 
-Use these tools to familiarise yourself with your data before analysis.
+Always check dimensions (`dim(x)`), variable names (`names(x)`), and types (`class(x)` / `typeof(x)`) before proceeding.
