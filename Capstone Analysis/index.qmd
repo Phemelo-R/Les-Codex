@@ -24,6 +24,8 @@ This page provides a step-by-step walkthrough of the R analysis used to investig
 
 At the end, you will have a working R-script that can be modified for similar ecological datasets.
 
+Download the dataset [here](downloads/capstone/capstone.zip).
+
 ## Prerequisites
 
 Ensure you have installed the following R packages:

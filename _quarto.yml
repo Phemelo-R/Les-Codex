@@ -6,6 +6,7 @@ project:
     - "Introduction to R/*.qmd"
     - "Python Tutorials/*.qmd"
     - "Error Bypass Atlas/*.qmd"
+    - "Capstone Analysis/*.qmd"
     - about.qmd
 
 website:
@@ -29,6 +30,8 @@ website:
             href: Python Tutorials/packages.qmd
       - text: "Error Bypass"
         href: Error Bypass Atlas/index.qmd
+      - text: "Capstone Analysis"
+        href: Capstone Analysis/index.qmd
     right:
       - text: "About"
         href: about.qmd
