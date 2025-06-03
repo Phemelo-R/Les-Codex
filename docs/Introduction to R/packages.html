@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Key R Packages – Les Codex</title>
+<title>Key R Packages –  Les Codex</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Les Codex</span>
+    <span class="navbar-title"><img src="images/lescodex-logo.png" style="height: 30px; vertical-align: middle;"> Les Codex</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -161,6 +161,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="../Error Bypass Atlas/index.qmd"> 
 <span class="menu-text">Error Bypass</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Capstone Analysis/index.html"> 
+<span class="menu-text">Capstone Analysis</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -399,43 +403,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>meta  <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(dune, <span class="at">distance =</span> <span class="st">"bray"</span>, <span class="at">k =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Run 0 stress 0.1192678 
-Run 1 stress 0.1183186 
+Run 1 stress 0.1886532 
+Run 2 stress 0.1192678 
 ... New best solution
-... Procrustes: rmse 0.02027068  max resid 0.0649625 
-Run 2 stress 0.1183186 
-... Procrustes: rmse 3.628051e-05  max resid 0.0001072331 
+... Procrustes: rmse 2.054545e-05  max resid 6.270383e-05 
 ... Similar to previous best
 Run 3 stress 0.1183186 
-... Procrustes: rmse 4.962724e-06  max resid 1.437127e-05 
+... New best solution
+... Procrustes: rmse 0.0202791  max resid 0.06502403 
+Run 4 stress 0.1183186 
+... New best solution
+... Procrustes: rmse 6.214986e-06  max resid 2.210462e-05 
 ... Similar to previous best
-Run 4 stress 0.1192678 
 Run 5 stress 0.1192678 
-Run 6 stress 0.1192678 
+Run 6 stress 0.1192679 
 Run 7 stress 0.1183186 
-... Procrustes: rmse 1.058477e-05  max resid 3.339494e-05 
+... Procrustes: rmse 1.562939e-05  max resid 5.000325e-05 
 ... Similar to previous best
-Run 8 stress 0.1192678 
-Run 9 stress 0.1192678 
-Run 10 stress 0.1812932 
-Run 11 stress 0.2003482 
-Run 12 stress 0.1183186 
-... Procrustes: rmse 2.073742e-06  max resid 6.065277e-06 
+Run 8 stress 0.1808911 
+Run 9 stress 0.1183186 
+... Procrustes: rmse 1.143233e-05  max resid 3.848721e-05 
 ... Similar to previous best
-Run 13 stress 0.1192679 
-Run 14 stress 0.1808911 
-Run 15 stress 0.1183186 
-... Procrustes: rmse 3.75847e-06  max resid 6.208995e-06 
+Run 10 stress 0.1183186 
+... Procrustes: rmse 8.496519e-06  max resid 2.901363e-05 
 ... Similar to previous best
-Run 16 stress 0.1809577 
-Run 17 stress 0.2045511 
-Run 18 stress 0.1183186 
-... Procrustes: rmse 9.026092e-06  max resid 2.757918e-05 
+Run 11 stress 0.1183186 
+... Procrustes: rmse 8.967988e-06  max resid 2.584797e-05 
 ... Similar to previous best
+Run 12 stress 0.2075713 
+Run 13 stress 0.2035424 
+Run 14 stress 0.1192678 
+Run 15 stress 0.1812932 
+Run 16 stress 0.1808911 
+Run 17 stress 0.1183186 
+... Procrustes: rmse 8.982864e-06  max resid 2.682122e-05 
+... Similar to previous best
+Run 18 stress 0.2075713 
 Run 19 stress 0.1192679 
-Run 20 stress 0.1183186 
-... Procrustes: rmse 5.615075e-06  max resid 1.669653e-05 
-... Similar to previous best
-*** Best solution repeated 7 times</code></pre>
+Run 20 stress 0.1192678 
+*** Best solution repeated 6 times</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(meta, <span class="at">type =</span> <span class="st">"n"</span>); <span class="fu">text</span>(meta, <span class="at">display =</span> <span class="st">"sites"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
