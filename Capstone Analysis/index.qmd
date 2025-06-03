@@ -1,0 +1,473 @@
+---
+title: "Diel Vertical Migration Analysis Tutorial"
+author: "Phemelo-R"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-tools: true
+    theme: cosmo
+---
+
+# Introduction
+
+This page provides a step-by-step walkthrough of the R analysis used to investigate diel vertical migration (DVM) patterns of euphausiids in St Helena Bay for our Capstone project (2025). It is designed as a tutorial for readers unfamiliar with the workflow. We will:
+
+1.  Load and inspect the data
+2.  Create derived variables (e.g., `period`, `CastID`)
+3.  Standardize and transform counts
+4.  Aggregate by cast and perform two-way ANOVA
+5.  Generate summary tables
+6.  Plot environmental profiles and abundance profiles
+
+At the end, you will have a working R-script that can be modified for similar ecological datasets.
+
+## Prerequisites
+
+Ensure you have installed the following R packages:
+
+```{r}
+#| eval: false
+#| include: false
+
+install.packages(c("dplyr", "ggplot2", "lme4", "emmeans", "knitr"))
+```
+
+Then, load these libraries:
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+
+library(dplyr)
+library(ggplot2)
+library(lme4)  # Only if you want to experiment with mixed models
+library(emmeans)
+library(knitr)  # For rendering tables
+library(tidyverse)
+```
+
+# 1. Loading and Inspecting the Data
+
+First, read in the CSV file exported from Excel. The file is named `CAPSTONE_PRIMER_7.csv` and located in my R project working directory. Please fix according to your file name and working directory.
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+
+# Read data
+data <- read.csv("CAPSTONE_PRIMER_7.csv", stringsAsFactors = FALSE)
+
+# Inspect the structure
+str(data)
+# Print the first few rows
+tail(data)
+```
+
+**Explanation:** - `read.csv()` imports the data into a data frame. - `str()` reveals column names, types, and a preview of values. - `head()` or `tail()` can be used to view initial or final rows.
+
+You should see columns such as `SampleID`, `Station`, `day`, `time`, `DepthMin`, `DepthMax`, `VolumeFiltered`, stage-specific counts (`egg_counts`, etc.), `DepthRange`, `mean_temp`, and `mean_fluoro`.
+
+# 2. Creating Derived Variables
+
+We need two new columns:
+
+1.  **`period`**: whether a cast occurred during Day or Night, based on `time`. We define Night as hours ≥ 18 or \< 6; otherwise Day.
+2.  **`CastID`**: a unique identifier for each cast, combining `Station`, `day`, and `time`. This lets us aggregate across multiple depth bins per cast.
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+
+data <- data %>%
+  mutate(
+    # Extract hour from time string (e.g., "00H00" -> 0)
+    hour = as.integer(sub("H.*", "", time)),
+    # Define period
+    period = ifelse(hour >= 18 | hour < 6, "Night", "Day"),
+    # Ensure DepthRange is an ordered factor (optional)
+    DepthRange = factor(
+      DepthRange,
+      levels = c("0-10m", "10-20m", "20-30m", "30-50m", "50-100m", "100-200m")
+    ),
+    # Station as a factor
+    Station = factor(Station, levels = c("Inshore", "Offshore")),
+    # CastID combining Station, day, and time
+    CastID = paste(Station, day, time, sep = "_")
+  )
+
+# Verify new columns
+kable(head(data[, c("time", "hour", "period", "CastID")]))
+```
+
+**Explanation:** - `sub("H.*", "", time)` removes everything from 'H' onwards, leaving the hour as text. - `as.integer()` converts it to numeric. - `ifelse()` classifies as "Night" if hour ≥18 or \<6; else "Day". - `paste()` concatenates strings with underscores.
+
+# 3. Standardizing and Transforming Counts
+
+Each stage-specific count must be converted to density (ind. m<sup>-3</sup>) by dividing by `VolumeFiltered`. We then apply a log transform (`log1p`) to stabilize variance and handle zeros.
+
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+
+data <- data %>%
+  mutate(
+    egg_dens = egg_counts / VolumeFiltered,
+    cypris_dens = cypris_counts / VolumeFiltered,
+    fur1_3_dens = furcilia_I_III / VolumeFiltered,
+    fur4_6_dens = furcilia_IV_VI / VolumeFiltered,
+    adult_dens = adult_counts / VolumeFiltered,
+    # Log-transform (log1p = log(1 + x))
+    log_egg = log1p(egg_dens),
+    log_cypris = log1p(cypris_dens),
+    log_fur1_3 = log1p(fur1_3_dens),
+    log_fur4_6 = log1p(fur4_6_dens),
+    log_adult = log1p(adult_dens)
+  )
+
+# Display a few rows
+glimpse(data[, c("egg_dens", "log_egg", "adult_dens", "log_adult")])
+```
+
+**Explanation:** - Dividing by `VolumeFiltered` standardizes counts to density. - `log1p()` handles zeros gracefully (e.g., `log1p(0) = 0`).
+
+# 4. Aggregating by Cast and Performing Two-Way ANOVA
+
+Because each cast (identified by `CastID`) has multiple depth bins, we collapse to one value per cast per stage by averaging the log-transformed densities. Then we fit a two-way ANOVA to test effects of `Station` (Inshore vs Outer) and `period` (Day vs Night) on mean log density.
+
+```{r}
+# Aggregate adults by CastID, Station, and period
+agg_adult <- data %>%
+  group_by(CastID, Station, period) %>%
+  summarise(mean_log_adult = mean(log_adult, na.rm = TRUE)) %>%
+  ungroup()
+
+# Check that Station and period each have 2 levels
+levels(agg_adult$Station)   # Should be Inshore, Offshore
+levels(agg_adult$period)    # Should be Day, Night
+
+# Fit two-way ANOVA
+model_adult_aov <- aov(mean_log_adult ~ Station * period, data = agg_adult)
+summary(model_adult_aov)
+
+# Post-hoc pairwise comparisons
+eemm_adult <- emmeans(model_adult_aov, ~ Station * period)
+pairs(eemm_adult)
+```
+
+**Explanation:** - `group_by()` and `summarise()` compute the mean of `log_adult` for each cast, station, and period. - `aov()` fits a classical two-way ANOVA. - `emmeans()` performs estimated marginal means and pairwise contrasts.
+
+Repeat this aggregation and ANOVA for other stages (e.g., `fur4_6_dens`):
+
+```{r}
+# Aggregate furcilia IV-VI
+agg_fur4_6 <- data %>%
+  group_by(CastID, Station, period) %>%
+  summarise(mean_log_fur4_6 = mean(log_fur4_6, na.rm = TRUE)) %>%
+  ungroup()
+
+# ANOVA for furcilia IV-VI
+model_fur4_6_aov <- aov(mean_log_fur4_6 ~ Station * period, data = agg_fur4_6)
+summary(model_fur4_6_aov)
+eemm_fur4_6 <- emmeans(model_fur4_6_aov, ~ Station * period)
+pairs(eemm_fur4_6)
+```
+
+# 5. Generating Summary Tables
+
+## 5.1 Provided Mean Values (no re-calculation)
+
+Use the pre-computed `mean_temp` and `mean_fluoro` columns from the biological dataset. We select unique combinations of station, depth bin, and period:
+
+```{r}
+#| message: false
+#| warning: false
+env_provided <- data %>%
+  select(Station, DepthRange, period, mean_temp, mean_fluoro) %>%
+  distinct()
+
+kable(env_provided,
+      caption = "Provided mean temperature and fluorescence by station, depth range, and period.")
+```
+
+## 5.2 Computing SD from Raw CTD (using raw environmental CSVs)
+
+Below, we replace the previous SD calculation with code that reads the four raw CTD CSVs directly, computes means and SDs for (Temp) and (Fluoro) by station, depth range, and period.
+
+```{r}
+# Helper function: read a CTD file, rename Depth if necessary, and tag station/type
+read_ctd <- function(filename, station, type) {
+  df <- read.csv(filename, stringsAsFactors = FALSE)
+  # If 'Depth..m.' column exists, rename it to 'Depth'
+  if ("Depth..m." %in% names(df)) {
+    df <- df %>% rename(Depth = "Depth..m.")
+  }
+  # Remove leading 'X' from time column names
+  names(df) <- sub("^X", "", names(df))
+  # Add Station and Type columns
+  df <- df %>% mutate(Station = station, Type = type)
+  return(df)
+}
+
+# Read and label Temperature CSVs
+ctd_temp_in  <- read_ctd("inshore_temp.csv",  station = "Inshore",  type = "Temp")
+ctd_temp_out <- read_ctd("offshore_temp.csv", station = "Offshore", type = "Temp")
+
+# Read and label Fluorescence CSVs
+ctd_flu_in  <- read_ctd("inshore_fluoro.csv",  station = "Inshore",  type = "Fluoro")
+ctd_flu_out <- read_ctd("offshore_fluoro.csv", station = "Offshore", type = "Fluoro")
+
+# Combine all CTD reads
+ctd_all <- bind_rows(ctd_temp_in, ctd_temp_out, ctd_flu_in, ctd_flu_out)
+
+# Reshape from wide to long; then back to wide so we have Temp and Fluoro in columns
+ctd_long <- ctd_all %>%
+  pivot_longer(
+    cols = -c(Depth, Station, Type),
+    names_to = "time",
+    values_to = "Value"
+  ) %>%
+  pivot_wider(
+    id_cols   = c(Depth, Station, time),
+    names_from = Type,
+    values_from = Value
+  )
+
+# 5.2.1 Create 'period' (Day vs Night) and 'DepthRange' bins
+ctd_long <- ctd_long %>%
+  mutate(
+    # Extract integer hour from time string (e.g., "00H00" -> 0)
+    hour = as.integer(sub("H.*", "", time)),
+    period = ifelse(hour >= 18 | hour < 6, "Night", "Day"),
+    # Bin absolute Depth into ranges matching our biological DepthRange
+    DepthRange = cut(
+      abs(Depth),
+      breaks = c(0, 10, 20, 30, 50, 100, 200),
+      labels = c("0-10m", "10-20m", "20-30m", "30-50m", "50-100m", "100-200m"),
+      include.lowest = TRUE
+    ),
+    Station = factor(Station, levels = c("Inshore", "Offshore"))
+  ) %>%
+  filter(!is.na(Temp) & !is.na(Fluoro) & !is.na(DepthRange))
+
+# 5.2.2 Compute mean and SD for each Station, DepthRange, period
+env_summary_raw <- ctd_long %>%
+  group_by(Station, DepthRange, period) %>%
+  summarise(
+    mean_temp   = mean(Temp,   na.rm = TRUE),
+    sd_temp     = sd(Temp,     na.rm = TRUE),
+    mean_fluoro = mean(Fluoro, na.rm = TRUE),
+    sd_fluoro   = sd(Fluoro,   na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+# Display the final summary table
+env_summary_raw %>%
+  arrange(Station, DepthRange, period) %>%
+  kable(caption = "Mean ± SD of Temperature and Fluorescence by station, depth range, and period")
+```
+
+## 5.3 Stage Density Summary
+
+Compute means of adult and furcilia IV–VI densities by station, depth range, and period.
+
+```{r}
+#| message: false
+#| warning: false
+# Mean density (ind/m^3) for adults and furcilia IV-VI by station, depth range, and period
+dens_summary <- data %>%
+  group_by(Station, DepthRange, period) %>%
+  summarise(
+    mean_adult = mean(adult_dens, na.rm = TRUE),
+    mean_fur4_6 = mean(fur4_6_dens, na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+kable(dens_summary,
+      caption = "Mean density (ind/m^3) for adults and furcilia IV-VI by station, depth range, and period.")
+```
+
+# 6. Plotting
+
+## 6.1 Temperature and Fluorescence Profiles
+
+We generate four panels: temperature vs. depth and fluorescence vs. depth for each station, colored by period. Use the merged summary for error bars:
+
+```{r}
+#| warning: false
+
+p1 <- ggplot(env_summary_raw, aes(x = mean_temp, y = DepthRange, color = period, group = period)) +
+  geom_line(linewidth = 0.8, position = position_dodge(width = 0.5)) +
+  geom_point(position = position_dodge(width = 0.5)) +
+  geom_errorbarh(aes(xmin = mean_temp - sd_temp, xmax = mean_temp + sd_temp),
+                 position = position_dodge(width = 0.5), height = 0.2) +
+  facet_wrap(~ Station) +
+  scale_y_discrete(limits = rev(levels(env_summary_raw$DepthRange))) +
+  scale_x_continuous(position = "top") +
+  scale_color_manual(values = c("gray", "black")) +
+  labs(x = "Temperature (°C)", y = "Depth Range", color = "Time of day") +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+
+p2 <- ggplot(env_summary_raw, aes(x = mean_fluoro, y = DepthRange, color = period, group = period)) +
+  geom_line(linewidth = 0.8, position = position_dodge(width = 0.5)) +
+  geom_point(position = position_dodge(width = 0.5)) +
+  geom_errorbarh(aes(xmin = mean_fluoro - sd_fluoro, xmax = mean_fluoro + sd_fluoro),
+                 position = position_dodge(width = 0.5), height = 0.2) +
+  facet_wrap(~ Station) +
+  scale_y_discrete(limits = rev(levels(env_summary_raw$DepthRange))) +
+  scale_x_continuous(position = "top") +
+  scale_color_manual(values = c("gray", "black")) +
+  labs(x = "Fluorescence (rel units)", y = "Depth Range", color = "Time of day") +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+
+# Display
+p1
+p2
+```
+
+## 6.2 Adult Abundance Profiles
+
+Below are two plots for adult abundance only:
+
+1.  **Bar Graph** showing mean ± SE per depth, grouped by period and faceted by station.
+2.  **Point Graph** showing mean ± SE per depth, with points and horizontal error bars.
+
+```{r}
+#| message: false
+#| warning: false
+# Summarize mean and SE of adult density by Station, period, and DepthMin
+adult_sum <- data %>%
+  group_by(Station, period, DepthMin) %>%
+  summarise(
+    mean_adult = mean(adult_dens, na.rm = TRUE),
+    se_adult   = sd(adult_dens, na.rm = TRUE)/sqrt(n())
+  ) %>%
+  ungroup()
+
+# Ensure Station is a factor and DepthMin is numeric
+adult_sum$Station <- factor(adult_sum$Station, levels = c("Inshore", "Offshore"))
+adult_sum$DepthMin <- as.numeric(adult_sum$DepthMin)
+
+# 1. Bar Graph: Mean ± SE, horizontal bars, faceted by Station
+p3 <- ggplot(adult_sum, aes(x = mean_adult, y = DepthMin, fill = period)) +
+  geom_col(position = position_dodge(width = 5), width = 0.8, color = "black") +
+  geom_errorbarh(aes(xmin = mean_adult - se_adult, xmax = mean_adult + se_adult),
+                 position = position_dodge(width = 5), height = 2, color = "black") +
+  facet_wrap(~ Station) +
+  scale_y_reverse() +
+  scale_fill_manual(values = c("Day" = "gray90", "Night" = "gray50")) +
+  labs(x = "Mean adult abundance (ind/m^3)", y = "Depth (m)", fill = "Time of day") +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+
+p3
+
+# 2. Point Graph: Points with error bars, faceted by Station
+p4 <- ggplot(adult_sum, aes(x = mean_adult, y = DepthMin, color = period)) +
+  geom_point(position = position_dodge(width = 2), size = 3) +
+  geom_errorbarh(aes(xmin = mean_adult - se_adult, xmax = mean_adult + se_adult),
+                 position = position_dodge(width = 2), height = 1, color = "black") +
+  facet_wrap(~ Station) +
+  scale_y_reverse() +
+  scale_color_manual(values = c("Day" = "gray90", "Night" = "gray50")) +
+  labs(x = "Mean adult abundance (ind/m^3)", y = "Depth (m)", color = "Time of day") +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+
+p4
+```
+
+## 6.3 Life-Stage Abundance Bar Plots
+
+Below we create mirrored horizontal bar plots so that "Day" abundance values extend to the left (negative axis) and "Night" values extend to the right (positive axis). We facet by `Station` (rows) and `LifeStage` (columns), and reverse the y-axis so that greater depths appear lower on the page.
+
+```{r}
+#| message: false
+#| warning: false
+
+# Summarize mean and standard error of density by Station, period, DepthMin, and LifeStage
+# and then assign negative values for Day to achieve a mirrored bar chart.
+df_sum <- data %>%
+  pivot_longer(
+    cols = c(egg_dens, cypris_dens, fur1_3_dens, fur4_6_dens, adult_dens),
+    names_to  = "LifeStage",
+    values_to = "Density"
+  ) %>%
+  mutate(
+    LifeStage = case_when(
+      LifeStage == "egg_dens"    ~ "Eggs",
+      LifeStage == "cypris_dens" ~ "Cypris",
+      LifeStage == "fur1_3_dens" ~ "Furcilia I-III",
+      LifeStage == "fur4_6_dens" ~ "Furcilia IV-VI",
+      LifeStage == "adult_dens"   ~ "Adults"
+    )
+  ) %>%
+  group_by(Station, period, DepthMin, LifeStage) %>%
+  summarise(
+    mean_den = mean(Density, na.rm = TRUE),
+    se_den   = sd(Density, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ungroup() %>%
+  # Assign negative values to "Day" so that day bars extend leftwards
+  mutate(
+    Abundance = ifelse(period == "Day", -mean_den, mean_den)
+  )
+
+# Factor ordering for LifeStage and Station
+df_sum$LifeStage <- factor(df_sum$LifeStage,
+                           levels = c("Eggs", "Cypris", "Furcilia I-III", "Furcilia IV-VI", "Adults"))
+df_sum$Station   <- factor(df_sum$Station, levels = c("Inshore", "Offshore"))
+
+# Create mirrored bar plot
+p5 <- ggplot(df_sum, aes(x = Abundance, y = as.factor(DepthMin), fill = period)) +
+  geom_col(width = 1, color = "black") +
+  geom_errorbarh(aes(xmin = Abundance - se_den, xmax = Abundance + se_den),
+                 height = 0.8, color = "black") +
+  facet_grid(Station ~ LifeStage, scales = "free_x") +
+  # Use absolute values for x-axis labels
+  scale_x_continuous(labels = function(x) abs(x)) +
+  # Reverse y-axis so deeper depths plot lower
+  scale_y_discrete(limits = rev(unique(as.factor(df_sum$DepthMin))),
+                   labels = function(x) paste(x, "m")) +
+  scale_fill_manual(values = c("Day" = "gray90", "Night" = "gray50")) +
+  labs(x = "Mean abundance (ind/m^3)", y = "Depth (m)") +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(face = "bold"),
+    axis.text.y = element_text(margin = margin(r = 4))
+  )
+
+p5
+```
+
+# Conclusion
+
+Now the tutorial uses your provided mean temperature and fluorescence values, supplements them with SDs computed from raw CTD data, and retains the biological summaries and plots Adult Abundance Profiles.
+
+This brings us to the end of the tutorial. You have now completed a full analysis of diel vertical migration:
+
+-   Data import and inspection
+-   Variable derivation (period, CastID)
+-   Standardization and log transformation
+-   Aggregation and two-way ANOVA
+-   Summary tables of environmental and biological data
+-   Visualization of temperature, fluorescence, and abundance profiles
+
+Feel free to adapt this template for your own datasets. Replace file names and variable names as needed, and add sections or modify styling. Good luck with your analysis!
+
+------------------------------------------------------------------------
+
+I cannot stress about this too much, please do not copy my work as is. I have given you my kindness in compiling this, do not shit on it.
+
+\~Phemelo-R
+
+------------------------------------------------------------------------
