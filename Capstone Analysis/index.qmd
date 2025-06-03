@@ -62,12 +62,12 @@ First, read in the CSV file exported from Excel. The file is named `CAPSTONE_PRI
 #| include: false
 
 # Read data
-data <- read.csv("CAPSTONE_PRIMER_7.csv", stringsAsFactors = FALSE)
+capstone_df <- read.csv("../capstone_data/CAPSTONE_PRIMER_7.csv", stringsAsFactors = FALSE)
 
 # Inspect the structure
-str(data)
+str(capstone_df)
 # Print the first few rows
-tail(data)
+tail(capstone_df)
 ```
 
 **Explanation:** - `read.csv()` imports the data into a data frame. - `str()` reveals column names, types, and a preview of values. - `head()` or `tail()` can be used to view initial or final rows.
@@ -86,7 +86,7 @@ We need two new columns:
 #| warning: false
 #| include: false
 
-data <- data %>%
+capstone_df <- capstone_df %>%
   mutate(
     # Extract hour from time string (e.g., "00H00" -> 0)
     hour = as.integer(sub("H.*", "", time)),
@@ -104,7 +104,7 @@ data <- data %>%
   )
 
 # Verify new columns
-kable(head(data[, c("time", "hour", "period", "CastID")]))
+kable(head(capstone_df[, c("time", "hour", "period", "CastID")]))
 ```
 
 **Explanation:** - `sub("H.*", "", time)` removes everything from 'H' onwards, leaving the hour as text. - `as.integer()` converts it to numeric. - `ifelse()` classifies as "Night" if hour ≥18 or \<6; else "Day". - `paste()` concatenates strings with underscores.
@@ -118,7 +118,7 @@ Each stage-specific count must be converted to density (ind. m<sup>-3</sup>) by 
 #| warning: false
 #| include: false
 
-data <- data %>%
+capstone_df <- capstone_df %>%
   mutate(
     egg_dens = egg_counts / VolumeFiltered,
     cypris_dens = cypris_counts / VolumeFiltered,
@@ -134,7 +134,7 @@ data <- data %>%
   )
 
 # Display a few rows
-glimpse(data[, c("egg_dens", "log_egg", "adult_dens", "log_adult")])
+glimpse(capstone_df[, c("egg_dens", "log_egg", "adult_dens", "log_adult")])
 ```
 
 **Explanation:** - Dividing by `VolumeFiltered` standardizes counts to density. - `log1p()` handles zeros gracefully (e.g., `log1p(0) = 0`).
@@ -145,7 +145,7 @@ Because each cast (identified by `CastID`) has multiple depth bins, we collapse 
 
 ```{r}
 # Aggregate adults by CastID, Station, and period
-agg_adult <- data %>%
+agg_adult <- capstone_df %>%
   group_by(CastID, Station, period) %>%
   summarise(mean_log_adult = mean(log_adult, na.rm = TRUE)) %>%
   ungroup()
@@ -169,7 +169,7 @@ Repeat this aggregation and ANOVA for other stages (e.g., `fur4_6_dens`):
 
 ```{r}
 # Aggregate furcilia IV-VI
-agg_fur4_6 <- data %>%
+agg_fur4_6 <- capstone_df %>%
   group_by(CastID, Station, period) %>%
   summarise(mean_log_fur4_6 = mean(log_fur4_6, na.rm = TRUE)) %>%
   ungroup()
@@ -190,7 +190,7 @@ Use the pre-computed `mean_temp` and `mean_fluoro` columns from the biological d
 ```{r}
 #| message: false
 #| warning: false
-env_provided <- data %>%
+env_provided <- capstone_df %>%
   select(Station, DepthRange, period, mean_temp, mean_fluoro) %>%
   distinct()
 
@@ -218,12 +218,12 @@ read_ctd <- function(filename, station, type) {
 }
 
 # Read and label Temperature CSVs
-ctd_temp_in  <- read_ctd("inshore_temp.csv",  station = "Inshore",  type = "Temp")
-ctd_temp_out <- read_ctd("offshore_temp.csv", station = "Offshore", type = "Temp")
+ctd_temp_in  <- read_ctd("../capstone_data/inshore_temp.csv",  station = "Inshore",  type = "Temp")
+ctd_temp_out <- read_ctd("../capstone_data/offshore_temp.csv", station = "Offshore", type = "Temp")
 
 # Read and label Fluorescence CSVs
-ctd_flu_in  <- read_ctd("inshore_fluoro.csv",  station = "Inshore",  type = "Fluoro")
-ctd_flu_out <- read_ctd("offshore_fluoro.csv", station = "Offshore", type = "Fluoro")
+ctd_flu_in  <- read_ctd("../capstone_data/inshore_fluoro.csv",  station = "Inshore",  type = "Fluoro")
+ctd_flu_out <- read_ctd("../capstone_data/offshore_fluoro.csv", station = "Offshore", type = "Fluoro")
 
 # Combine all CTD reads
 ctd_all <- bind_rows(ctd_temp_in, ctd_temp_out, ctd_flu_in, ctd_flu_out)
@@ -283,7 +283,7 @@ Compute means of adult and furcilia IV–VI densities by station, depth range, a
 #| message: false
 #| warning: false
 # Mean density (ind/m^3) for adults and furcilia IV-VI by station, depth range, and period
-dens_summary <- data %>%
+dens_summary <- capstone_df %>%
   group_by(Station, DepthRange, period) %>%
   summarise(
     mean_adult = mean(adult_dens, na.rm = TRUE),
@@ -346,7 +346,7 @@ Below are two plots for adult abundance only:
 #| message: false
 #| warning: false
 # Summarize mean and SE of adult density by Station, period, and DepthMin
-adult_sum <- data %>%
+adult_sum <- capstone_df %>%
   group_by(Station, period, DepthMin) %>%
   summarise(
     mean_adult = mean(adult_dens, na.rm = TRUE),
@@ -397,7 +397,7 @@ Below we create mirrored horizontal bar plots so that "Day" abundance values ext
 
 # Summarize mean and standard error of density by Station, period, DepthMin, and LifeStage
 # and then assign negative values for Day to achieve a mirrored bar chart.
-df_sum <- data %>%
+df_sum <- capstone_df %>%
   pivot_longer(
     cols = c(egg_dens, cypris_dens, fur1_3_dens, fur4_6_dens, adult_dens),
     names_to  = "LifeStage",
