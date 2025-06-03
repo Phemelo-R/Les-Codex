@@ -10,8 +10,7 @@ project:
     - about.qmd
 
 website:
-  title: "Les Codex"
-  logo: images/lescodex-logo.png
+  title: "<img src='images/lescodex-logo.png' style='height: 30px; vertical-align: middle;'> Les Codex"
   navbar:
     left:
       - text: "Home"
