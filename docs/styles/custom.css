@@ -1,0 +1,233 @@
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   1. CORE TYPOGRAPHY & COLOURS                                                 */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Use a crisp, mono-oriented typeface for body text and code elements */
+body, code, pre, .quarto-code {
+  font-family: "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e0e0e0; /* light grey text on dark background */
+  background-color: #1a1a1a; /* deep charcoal background site‐wide */
+}
+
+/* Standardise headings with a geometric sans-serif for contrast */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Links adopt a neon‐accent hue and gently glow on hover */
+a {
+  color: #6ac1ff; /* icy blue */
+  text-decoration: none;
+  transition: text-shadow 0.2s ease-in-out;
+}
+
+a:hover {
+  text-shadow: 0 0 4px rgba(106, 193, 255, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   2. NAVBAR & HEADER STYLING                                                    */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Replace Quarto’s default header with a full-width, curved gradient bar */
+.navbar {
+  background: linear-gradient(135deg, #0f1630, #1a1a2e);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Remove any default Quarto padding from the navbar container */
+.navbar .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Style individual nav links: spaced and all caps for a more “terminal‐like” feel */
+.navbar .navbar-nav .nav-link {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-right: 1.5rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #6ac1ff;
+}
+
+/* Quarto may insert a “collapsed” toggle icon on narrow screens; make it match the theme */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#cfcfcf' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   3. MAIN CONTENT & CONTAINER                                                    */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Constrain the main content to a centred, fixed‐width column */
+.main-container {
+  max-width: 860px;
+  margin: 2rem auto 4rem auto;
+  padding: 0 1rem;
+}
+
+/* Give each section a subtle separation via faint border and spacing */
+article section {
+  border-left: 2px solid #2b2b2b;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Blockquotes rendered in a darker box, italic, with a neon accent border */
+blockquote {
+  background-color: #262626;
+  border-left: 4px solid #6ac1ff;
+  color: #d0d0d0;
+  font-style: italic;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   4. CODE BLOCKS & INLINE CODE                                                    */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Background for fenced code blocks; slight shadow to lift them off the page */
+pre, .quarto-code {
+  background-color: #212121;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Differentiate inline code spans with a tinted, dark backdrop */
+code {
+  background-color: #2d2d2d;
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+/* Syntax highlighting: use a muted palette that pairs well with the dark background */
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #6c6c6c;
+}
+
+.token.punctuation {
+  color: #e0e0e0;
+}
+
+.token.property, .token.tag, .token.constant, .token.symbol {
+  color: #ff79c6; /* pastel pink */
+}
+
+.token.keyword {
+  color: #8be9fd; /* light cyan */
+  font-weight: 600;
+}
+
+.token.function {
+  color: #50fa7b; /* mint green */
+}
+
+.token.string {
+  color: #f1fa8c; /* soft yellow */
+}
+
+.token.operator {
+  color: #b3b3b3;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   5. BUTTONS & LINKED ACTIONS                                                      */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Style “Download” or call‐to‐action links as buttons */
+a.btn, button {
+  display: inline-block;
+  background: linear-gradient(135deg, #6ac1ff 0%, #3c9ce0 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+a.btn:hover, button:hover {
+  background: linear-gradient(135deg, #3c9ce0 0%, #6ac1ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Example: if you write [Download here](file.zip){.btn}, it will render as a neon-accent button */
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   6. FOOTER STYLING                                                                 */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* A minimal footer, centred, with muted text */
+footer {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  border-top: 1px solid #2b2b2b;
+}
+
+/* If you include social icons, make them glow on hover */
+footer a {
+  color: #cfcfcf;
+  margin: 0 0.5rem;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: #6ac1ff;
+  text-shadow: 0 0 4px rgba(106, 193, 255, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────────────────────── */
+/*   7. RESPONSIVE TWEAKS                                                             */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+/* Shrink padding on smaller screens so code blocks don’t crowd */
+@media (max-width: 768px) {
+  .main-container {
+    margin: 1.5rem auto 3rem auto;
+    padding: 0 0.5rem;
+  }
+  pre, .quarto-code {
+    padding: 0.75rem;
+  }
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar .navbar-nav .nav-link {
+    margin-right: 1rem;
+    font-size: 0.9rem;
+  }
+}

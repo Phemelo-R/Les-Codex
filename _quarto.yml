@@ -2,7 +2,8 @@ project:
   type: website
   output-dir: docs
   resources:
-    - images/lescodex-logo.png
+    - images/lescodex-logo.png # for light mode
+    - images/lescodex-logo-white.png # for dark mode
     - downloads/capstone/capstone.zip
   render:
     - index.qmd
@@ -13,7 +14,10 @@ project:
     - about.qmd
 
 website:
-  title: "<a href='index.html'><img src='images/lescodex-logo.png' style='height: 50px; margin-top: -8px;'></a>"
+  title: |
+    <a href="index.html" aria-label="Les Codex Home">
+      <img id="site-logo" src="images/lescodex-logo.png" alt="Les Codex" style="height:50px;">
+    </a>
   navbar:
     left:
       - text: "Home"
@@ -40,7 +44,11 @@ website:
 
 format:
   html:
-    theme: default
-    css: styles/minimal.css
+    theme: 
+      light: default
+      dark:  dark
+    css:
+    - styles/logo-switch.css
+    - styles/custom.css
     toc: true
 

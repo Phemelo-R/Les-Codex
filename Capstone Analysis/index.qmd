@@ -32,7 +32,6 @@ Ensure you have installed the following R packages:
 
 ```{r}
 #| eval: false
-#| include: false
 
 install.packages(c("dplyr", "ggplot2", "lme4", "emmeans", "knitr"))
 ```
@@ -42,7 +41,6 @@ Then, load these libraries:
 ```{r}
 #| message: false
 #| warning: false
-#| include: false
 
 library(dplyr)
 library(ggplot2)
@@ -59,7 +57,6 @@ First, read in the CSV file exported from Excel. The file is named `CAPSTONE_PRI
 ```{r}
 #| message: false
 #| warning: false
-#| include: false
 
 # Read data
 capstone_df <- read.csv("../capstone_data/CAPSTONE_PRIMER_7.csv", stringsAsFactors = FALSE)
@@ -84,7 +81,6 @@ We need two new columns:
 ```{r}
 #| message: false
 #| warning: false
-#| include: false
 
 capstone_df <- capstone_df %>%
   mutate(
@@ -116,7 +112,6 @@ Each stage-specific count must be converted to density (ind. m<sup>-3</sup>) by 
 ```{r}
 #| message: false
 #| warning: false
-#| include: false
 
 capstone_df <- capstone_df %>%
   mutate(

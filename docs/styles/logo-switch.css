@@ -1,0 +1,26 @@
+/* Default: show the coloured logo */
+#site-logo {
+  content: url("images/lescodex-logo.png");
+  /* you can adjust height here if you’d rather set it in CSS: */
+  /* height: 50px; */
+}
+
+/* When the user prefers dark mode, swap to the white silhouette */
+@media (prefers-color-scheme: dark) {
+  #site-logo {
+    content: url("images/lescodex-logo-white.png");
+  }
+}
+
+/* Optional: tweak margins so the logo sits nicely in the navbar */
+nav a[aria-label="Les Codex Home"] {
+  display: flex;
+  align-items: center;
+}
+
+/* If your theme adds padding or a background behind the logo, adjust: */
+nav {
+  /* Ensure sufficient vertical padding so the 50px logo doesn’t get cropped */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
