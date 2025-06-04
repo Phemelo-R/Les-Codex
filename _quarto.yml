@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - downloads/capstone/capstone.zip
   render:
     - index.qmd
     - "Introduction to R/*.qmd"
