@@ -1,30 +1,33 @@
+# ─── _quarto.yml ────────────────────────────────────────────────────────────────
+
 project:
   type: website
   output-dir: docs
+
+  # ─── Make sure Quarto copies these into docs/images/ ─────────────────────────────
   resources:
-    - images/lescodex-logo.png # for light mode
-    - images/lescodex-logo-white.png # for dark mode
-    - downloads/capstone/capstone.zip
-  render:
-    - index.qmd
-    - "Introduction to R/*.qmd"
-    - "Python Tutorials/*.qmd"
-    - "Error Bypass Atlas/*.qmd"
-    - "Capstone Analysis/*.qmd"
-    - about.qmd
+    - images/lescodex-logo.png
+    - images/lescodex-logo-white.png
 
 website:
+  # ─── Embed only the <img> tag; no “Les Codex” text beside it ───────────────────
   title: |
     <a href="index.html" aria-label="Les Codex Home">
-      <img id="site-logo" src="images/lescodex-logo.png" alt="Les Codex" style="height:50px;">
+      <img
+        id="site-logo"
+        src="images/lescodex-logo.png"
+        alt="Les Codex"
+        style="height:50px;"
+      >
     </a>
+
   navbar:
     left:
       - text: "Home"
         href: index.qmd
       - text: "R Tutorials"
         menu:
-          - text: "Introduction to R"
+          - text: "Getting Started"
             href: Introduction to R/index.qmd
           - text: "Key Packages"
             href: Introduction to R/packages.qmd
@@ -44,11 +47,17 @@ website:
 
 format:
   html:
-    theme: 
+    # ─── Let Quarto handle light/dark switching for general page styles ─────────────
+    theme:
       light: default
       dark:  dark
+
     css:
-    - styles/logo-switch.css
-    - styles/custom.css
+      # ─── 1) Swap logo images based on light/dark
+      - styles/logo-switch.css
+      # ─── 2) Override everything else: code colors, fonts, navbar, etc.
+      - styles/custom.css
+
     toc: true
 
+# ───────────────────────────────────────────────────────────────────────────────────
