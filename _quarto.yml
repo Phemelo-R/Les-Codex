@@ -17,14 +17,12 @@ website:
         id="site-logo"
         src="images/lescodex-logo.png"
         alt="Les Codex"
-        style="height:50px;"
+        style="height:90px;"
       >
     </a>
 
   navbar:
     left:
-      - text: "Home"
-        href: index.qmd
       - text: "R Tutorials"
         menu:
           - text: "Getting Started"

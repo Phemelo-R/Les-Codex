@@ -1,39 +1,84 @@
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   1. RESET: LET QUARTO’S VARIABLES CONTROL BG & TEXT                         */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/*──────────────────────────────────────────────────────────────────────────────*/
+/*  1. NAVIGATION BAR: ANIMATED UNDERLINE ON HOVER                              */
+/*──────────────────────────────────────────────────────────────────────────────*/
 
-/* Instead of forcing the site to “always dark,” revert to Quarto’s theme variables. */
-body {
-  font-family: "JetBrains Mono", Menlo, Consolas, monospace;
-  background-color: var(--quarto-page-bg);
-  color: var(--quarto-body-color);
-  line-height: 1.5;
-  margin: 0; /* remove default margins */
+/* Make each top‐level nav‐link a positioned element so we can draw an ::after underline */
+.navbar .navbar-nav .nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s ease-in-out;
 }
 
-/* Use Quarto’s “block background” variable for fenced code blocks */
-pre, .quarto-code {
-  background-color: var(--quarto-block-bg);
-  border-radius: 6px;
-  padding: 1rem;
-  overflow-x: auto;
-  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1);
+/* Create the hidden underline (zero‐width, centered) */
+.navbar .navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #6ac1ff;              /* neon‐blue accent */
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
-/* Inline code spans get Quarto’s code‐background variable */
-code {
-  background-color: var(--quarto-code-bg);
-  padding: 0.15em 0.3em;
-  border-radius: 3px;
-  font-size: 0.95em;
-  color: var(--quarto-body-color);
+/* On hover: expand underline to full width, sliding from center to left */
+.navbar .navbar-nav .nav-link:hover::after {
+  width: 100%;
+  left: 0;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   2. HEADINGS & MAIN CONTENT                                                  */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/* Optionally, shift the link text slightly upward on hover */
+.navbar .navbar-nav .nav-link:hover {
+  color: #ffffff;                   /* ensure hovered text is bright white */
+  transform: translateY(-2px);
+}
 
-/* Headings use a geometric sans‐serif for contrast against monospace body text */
+/*──────────────────────────────────────────────────────────────────────────────*/
+/*  1.2. DROPDOWN MENU: MODERN TECH AESTHETIC & FADE‐SLIDE IN                      */
+/*──────────────────────────────────────────────────────────────────────────────*/
+
+/* 1.2.1 Base style for all dropdown‐menu containers */
+.dropdown-menu {
+  background: #1a1a2e !important;            /* deep‐navy background */
+  border: none !important;                  /* remove default border */
+  border-radius: 8px;                       /* softly rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* subtle drop‐shadow */
+  padding: 0.5rem 0;                        /* a little vertical breathing room */
+  transform: translateY(10px);              /* start slightly lower */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* 1.2.2 When the dropdown is “show” (Bootstrap toggles .show on .dropdown) */
+.dropdown.show > .dropdown-menu {
+  transform: translateY(0);  /* slide up into place */
+  opacity: 1;                /* fade in */
+  visibility: visible;
+}
+
+/* 1.2.3 Style each item inside the dropdown */
+.dropdown-item {
+  color: #e0e0e0 !important;              /* light grey text */
+  padding: 0.5rem 1.25rem;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* 1.2.4 On hover or focus, make each dropdown‐item glow */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: rgba(106, 193, 255, 0.15) !important; /* faint neon-blue highlight */
+  color: #ffffff !important;                        /* pure white text */
+}
+
+/* 1.2.5 If there is a dividing line (dropdown-divider), restyle it */
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 2. HEADINGS --------------------------------------------------------------------*/
+
+/* Headings get a sans-serif contrast and use Quarto’s body color */
 h1, h2, h3, h4, h5, h6 {
   font-family: "IBM Plex Sans", Arial, sans-serif;
   font-weight: 600;
@@ -42,21 +87,25 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.75rem;
 }
 
-/* Center the main content in a fixed‐width column */
+/* 3. MAIN CONTAINER & CONTENT SECTIONS -------------------------------------------*/
+
+/* Constrain the content to a central column */
 .main-container {
   max-width: 860px;
   margin: 2rem auto 4rem auto;
   padding: 0 1rem;
 }
 
-/* Section blocks get a faint left border for visual separation */
+/* Give each <section> a faint left border for visual separation */
 article section {
   border-left: 2px solid var(--quarto-border-color);
   padding-left: 1rem;
   margin-bottom: 2rem;
 }
 
-/* Blockquotes rendered in a subtle box with a neon accent border */
+/* 4. BLOCKQUOTES ----------------------------------------------------------------*/
+
+/* Blockquotes get Quarto’s block background plus a neon accent border */
 blockquote {
   background-color: var(--quarto-block-bg);
   border-left: 4px solid #6ac1ff;
@@ -67,37 +116,53 @@ blockquote {
   border-radius: 4px;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   3. LINKS & BUTTONS                                                          */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/* 5. INLINE CODE & FENCED CODE BLOCKS -------------------------------------------*/
 
-/* Links adopt Quarto’s link colour variable (which changes in dark/light) */
+/* Background & text color for fenced code blocks (use Quarto’s block variables) */
+pre, .quarto-code {
+  background-color: var(--quarto-block-bg);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Inline <code> spans should use Quarto’s code background; force text to contrast */
+code {
+  background-color: var(--quarto-code-bg);
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+  font-size: 0.95em;
+  color: var(--quarto-body-color);
+}
+
+/* Ensure links inside code (both inline & block) remain visible in both themes */
+@media (prefers-color-scheme: dark) {
+  code a,
+  .quarto-code a {
+    color: #8be9fd !important; /* light cyan, pops on dark background */
+  }
+}
+@media (prefers-color-scheme: light) {
+  code a,
+  .quarto-code a {
+    color: #0077cc !important; /* deep blue, pops on light background */
+  }
+}
+
+/* 6. LINKS & BUTTONS --------------------------------------------------------------*/
+
+/* Links use Quarto’s link color, with a neon‐glow hover */
 a {
   color: var(--quarto-link-color);
   text-decoration: none;
   transition: text-shadow 0.2s ease-in-out;
 }
-
 a:hover {
   text-shadow: 0 0 4px var(--quarto-link-color);
 }
 
-/* Code‐block links / inline‐code links: ensure they differ enough from background */
-@media (prefers-color-scheme: dark) {
-  code a,
-  .quarto-code a {
-    color: #8be9fd; /* light cyan for readability in dark mode */
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  code a,
-  .quarto-code a {
-    color: #0077cc; /* deep blue for readability in light mode */
-  }
-}
-
-/* Style “Download” (or any link with .btn) as a neon‐accent button */
+/* Style any link with “.btn” as a neon gradient button */
 a.btn,
 button {
   display: inline-block;
@@ -113,7 +178,6 @@ button {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   text-decoration: none;
 }
-
 a.btn:hover,
 button:hover {
   background: linear-gradient(135deg, #3c9ce0 0%, #6ac1ff 100%);
@@ -121,9 +185,7 @@ button:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   4. NAVBAR & HEADER                                                           */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/* 7. NAVBAR & HEADER --------------------------------------------------------------*/
 
 /* Gradient header with rounded bottom corners, sticky to top */
 .navbar {
@@ -137,13 +199,13 @@ button:hover {
   z-index: 1000;
 }
 
-/* Remove default Quarto navbar container padding */
+/* Remove default container padding so items align nicely */
 .navbar .container {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* Style links in the navbar as uppercase, spaced out, techno‐feel */
+/* Style navbar links: spaced, uppercase, techno feel */
 .navbar .navbar-nav .nav-link {
   color: #cfcfcf;
   font-size: 0.95rem;
@@ -152,25 +214,21 @@ button:hover {
   margin-right: 1.5rem;
   transition: color 0.15s ease-in-out;
 }
-
 .navbar .navbar-nav .nav-link:hover {
   color: #6ac1ff;
 }
 
-/* Toggler icon for mobile: ensure it’s light grey lines */
+/* Mobile “hamburger” icon: ensure the lines are light grey */
 .navbar-toggler {
   border: none;
 }
-
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23cfcfcf' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   5. FOOTER                                                                    */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/* 8. FOOTER ----------------------------------------------------------------------*/
 
-/* Centered footer with muted text and a top border */
+/* Simple centred footer with muted text and a top border */
 footer {
   margin-top: 4rem;
   padding: 1.5rem 0;
@@ -179,37 +237,30 @@ footer {
   color: #aaaaaa;
   border-top: 1px solid var(--quarto-border-color);
 }
-
 footer a {
   color: #cfcfcf;
   margin: 0 0.5rem;
   transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
 }
-
 footer a:hover {
   color: #6ac1ff;
   text-shadow: 0 0 4px rgba(106, 193, 255, 0.7);
 }
 
-/* ───────────────────────────────────────────────────────────────────────────── */
-/*   6. RESPONSIVE TWEAKS                                                         */
-/* ───────────────────────────────────────────────────────────────────────────── */
+/* 9. RESPONSIVE TWEAKS -----------------------------------------------------------*/
 
 @media (max-width: 768px) {
   .main-container {
     margin: 1.5rem auto 3rem auto;
     padding: 0 0.5rem;
   }
-
   pre,
   .quarto-code {
     padding: 0.75rem;
   }
-
   .navbar {
     padding: 0.5rem 1rem;
   }
-
   .navbar .navbar-nav .nav-link {
     margin-right: 1rem;
     font-size: 0.9rem;

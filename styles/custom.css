@@ -1,16 +1,79 @@
-/*──────────────────────────────────────────────────────────────────────────────────*/
-/*  custom.css                                                                     */
-/*──────────────────────────────────────────────────────────────────────────────────*/
+/*──────────────────────────────────────────────────────────────────────────────*/
+/*  1. NAVIGATION BAR: ANIMATED UNDERLINE ON HOVER                              */
+/*──────────────────────────────────────────────────────────────────────────────*/
 
-/* 1. BASE SITE STYLING & QUARTO VARIABLES ----------------------------------------*/
+/* Make each top‐level nav‐link a positioned element so we can draw an ::after underline */
+.navbar .navbar-nav .nav-link {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s ease-in-out;
+}
 
-/* Use a monospace base font; let Quarto set the page background and text colour */
-body {
-  font-family: "JetBrains Mono", Menlo, Consolas, monospace;
-  background-color: var(--quarto-page-bg);
-  color: var(--quarto-body-color);
-  line-height: 1.5;
-  margin: 0; /* remove default margins */
+/* Create the hidden underline (zero‐width, centered) */
+.navbar .navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #6ac1ff;              /* neon‐blue accent */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+/* On hover: expand underline to full width, sliding from center to left */
+.navbar .navbar-nav .nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Optionally, shift the link text slightly upward on hover */
+.navbar .navbar-nav .nav-link:hover {
+  color: #ffffff;                   /* ensure hovered text is bright white */
+  transform: translateY(-2px);
+}
+
+/*──────────────────────────────────────────────────────────────────────────────*/
+/*  1.2. DROPDOWN MENU: MODERN TECH AESTHETIC & FADE‐SLIDE IN                      */
+/*──────────────────────────────────────────────────────────────────────────────*/
+
+/* 1.2.1 Base style for all dropdown‐menu containers */
+.dropdown-menu {
+  background: #1a1a2e !important;            /* deep‐navy background */
+  border: none !important;                  /* remove default border */
+  border-radius: 8px;                       /* softly rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* subtle drop‐shadow */
+  padding: 0.5rem 0;                        /* a little vertical breathing room */
+  transform: translateY(10px);              /* start slightly lower */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* 1.2.2 When the dropdown is “show” (Bootstrap toggles .show on .dropdown) */
+.dropdown.show > .dropdown-menu {
+  transform: translateY(0);  /* slide up into place */
+  opacity: 1;                /* fade in */
+  visibility: visible;
+}
+
+/* 1.2.3 Style each item inside the dropdown */
+.dropdown-item {
+  color: #e0e0e0 !important;              /* light grey text */
+  padding: 0.5rem 1.25rem;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* 1.2.4 On hover or focus, make each dropdown‐item glow */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: rgba(106, 193, 255, 0.15) !important; /* faint neon-blue highlight */
+  color: #ffffff !important;                        /* pure white text */
+}
+
+/* 1.2.5 If there is a dividing line (dropdown-divider), restyle it */
+.dropdown-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 /* 2. HEADINGS --------------------------------------------------------------------*/

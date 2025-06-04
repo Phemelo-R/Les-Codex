@@ -10,9 +10,9 @@
 <title>Key R Packages – &lt;a href="index.html" aria-label="Les Codex Home"&gt;
   &lt;img
     id="site-logo"
-    src="/images/lescodex-logo.png"
+    src="images/lescodex-logo.png"
     alt="Les Codex"
-    style="height:50px;"
+    style="height:90px;"
   &gt;
 &lt;/a&gt;</title>
 <style>
@@ -289,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title"><a href="index.html" aria-label="Les Codex Home"> <img id="site-logo" src="../images/lescodex-logo.png" alt="Les Codex" style="height:50px;"> </a></span>
+    <span class="navbar-title"><a href="index.html" aria-label="Les Codex Home"> <img id="site-logo" src="images/lescodex-logo.png" alt="Les Codex" style="height:90px;"> </a></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -298,10 +298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">R Tutorials</span>
@@ -309,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-tutorials">    
         <li>
     <a class="dropdown-item" href="../Introduction to R/index.html">
- <span class="dropdown-text">Introduction to R</span></a>
+ <span class="dropdown-text">Getting Started</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Introduction to R/packages.html">
@@ -579,44 +575,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>meta  <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(dune, <span class="at">distance =</span> <span class="st">"bray"</span>, <span class="at">k =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Run 0 stress 0.1192678 
-Run 1 stress 0.1192678 
-... Procrustes: rmse 1.668894e-05  max resid 4.940359e-05 
-... Similar to previous best
+Run 1 stress 0.1183186 
+... New best solution
+... Procrustes: rmse 0.02027045  max resid 0.0649628 
 Run 2 stress 0.1183186 
-... New best solution
-... Procrustes: rmse 0.0202697  max resid 0.06495922 
-Run 3 stress 0.1183186 
-... Procrustes: rmse 8.275443e-06  max resid 2.744128e-05 
+... Procrustes: rmse 5.599465e-06  max resid 1.64419e-05 
 ... Similar to previous best
-Run 4 stress 0.1192678 
-Run 5 stress 0.1183186 
-... New best solution
-... Procrustes: rmse 2.184652e-06  max resid 6.524734e-06 
+Run 3 stress 0.1192678 
+Run 4 stress 0.1183186 
+... Procrustes: rmse 2.325036e-05  max resid 7.618865e-05 
 ... Similar to previous best
-Run 6 stress 0.1889645 
-Run 7 stress 0.1183186 
-... Procrustes: rmse 7.203666e-06  max resid 2.266296e-05 
+Run 5 stress 0.2979834 
+Run 6 stress 0.1183186 
+... Procrustes: rmse 5.528662e-06  max resid 1.88258e-05 
 ... Similar to previous best
-Run 8 stress 0.1183186 
-... Procrustes: rmse 3.388603e-05  max resid 0.0001101988 
-... Similar to previous best
+Run 7 stress 0.1808912 
+Run 8 stress 0.1901489 
 Run 9 stress 0.1192678 
-Run 10 stress 0.1192679 
-Run 11 stress 0.1183186 
-... Procrustes: rmse 1.659527e-05  max resid 5.335225e-05 
-... Similar to previous best
-Run 12 stress 0.1808911 
+Run 10 stress 0.1192678 
+Run 11 stress 0.1192679 
+Run 12 stress 0.1886532 
 Run 13 stress 0.1192678 
-Run 14 stress 0.1192678 
-Run 15 stress 0.1192678 
-Run 16 stress 0.1183186 
-... Procrustes: rmse 2.880686e-06  max resid 8.257198e-06 
+Run 14 stress 0.1183186 
+... New best solution
+... Procrustes: rmse 1.378075e-06  max resid 4.572391e-06 
 ... Similar to previous best
-Run 17 stress 0.201917 
-Run 18 stress 0.1192679 
-Run 19 stress 0.1192678 
-Run 20 stress 0.1192679 
-*** Best solution repeated 5 times</code></pre>
+Run 15 stress 0.1192678 
+Run 16 stress 0.1192678 
+Run 17 stress 0.1192678 
+Run 18 stress 0.1183186 
+... Procrustes: rmse 8.303162e-06  max resid 1.978957e-05 
+... Similar to previous best
+Run 19 stress 0.1192679 
+Run 20 stress 0.1192678 
+*** Best solution repeated 2 times</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(meta, <span class="at">type =</span> <span class="st">"n"</span>); <span class="fu">text</span>(meta, <span class="at">display =</span> <span class="st">"sites"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
