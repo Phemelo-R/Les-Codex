@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: docs
   resources:
+    - images/lescodex-logo.png
     - downloads/capstone/capstone.zip
   render:
     - index.qmd
@@ -12,7 +13,7 @@ project:
     - about.qmd
 
 website:
-  title: "<img src='images/lescodex-logo.png' style='height: 30px; vertical-align: middle;'> Les Codex"
+  title: "<a href='index.html'><img src='images/lescodex-logo.png' style='height: 50px; margin-top: -8px;'></a>"
   navbar:
     left:
       - text: "Home"
